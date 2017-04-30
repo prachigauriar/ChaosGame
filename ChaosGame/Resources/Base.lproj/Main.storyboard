@@ -993,10 +993,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="xx5-tr-efh">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="qcz-P7-isR" customClass="ImageDataSourceView" customModule="ChaosGame" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Jhh-fs-UUs"/>
-                            </imageView>
+                            </customView>
                             <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y8e-Sn-fDI">
                                 <rect key="frame" x="8" y="8" width="85" height="14"/>
                                 <subviews>
@@ -1028,17 +1027,17 @@
                             </stackView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qcz-P7-isR" secondAttribute="trailing" id="0Uy-mT-tz1"/>
+                            <constraint firstItem="qcz-P7-isR" firstAttribute="leading" secondItem="sJp-qt-32U" secondAttribute="leading" id="1kS-aK-8nb"/>
                             <constraint firstItem="y8e-Sn-fDI" firstAttribute="leading" secondItem="sJp-qt-32U" secondAttribute="leading" constant="8" id="3Ov-w4-J3x"/>
+                            <constraint firstItem="qcz-P7-isR" firstAttribute="top" secondItem="sJp-qt-32U" secondAttribute="top" id="G6g-Ay-Fnd"/>
+                            <constraint firstAttribute="bottom" secondItem="qcz-P7-isR" secondAttribute="bottom" id="ROS-GN-GYF"/>
                             <constraint firstAttribute="bottom" secondItem="y8e-Sn-fDI" secondAttribute="bottom" constant="8" id="V0z-AQ-o0s"/>
-                            <constraint firstItem="xx5-tr-efh" firstAttribute="top" secondItem="sJp-qt-32U" secondAttribute="top" id="nFq-0r-I0K"/>
-                            <constraint firstAttribute="trailing" secondItem="xx5-tr-efh" secondAttribute="trailing" id="qhe-sc-QfG"/>
-                            <constraint firstItem="xx5-tr-efh" firstAttribute="leading" secondItem="sJp-qt-32U" secondAttribute="leading" id="rhm-AW-YFF"/>
-                            <constraint firstAttribute="bottom" secondItem="xx5-tr-efh" secondAttribute="bottom" id="s8F-Yq-YeM"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="iterationLabel" destination="sUV-cA-A49" id="r1r-4D-KMW"/>
-                        <outlet property="pointPlotView" destination="xx5-tr-efh" id="G6H-8R-AjB"/>
+                        <outlet property="pointPlotView" destination="qcz-P7-isR" id="DSH-8o-eAn"/>
                     </connections>
                 </viewController>
                 <customObject id="D79-DS-k54" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

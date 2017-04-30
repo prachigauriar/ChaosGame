@@ -33,7 +33,7 @@ public class ChaosGamePlotViewController : NSViewController {
 
     
     // View
-    @IBOutlet weak var pointPlotView: NSImageView!
+    @IBOutlet weak var pointPlotView: ImageDataSourceView!
     @IBOutlet weak var iterationLabel: NSTextField!
     
     
@@ -45,7 +45,7 @@ public class ChaosGamePlotViewController : NSViewController {
         }
                 
         pointPlotter = PointPlotter(size: pointPlotView.bounds.size, backgroundColor: .black)
-        pointPlotView.image = pointPlotter.image
+        pointPlotView.imageAccessor = pointPlotter.imageAccessor
         reset()
     }
     
@@ -75,8 +75,12 @@ public class ChaosGamePlotViewController : NSViewController {
         }
         
         pointPlotter.plot(gameRunner.polygon.vertices, color: .blue, radius: 5)
-        pointPlotter.plot(gameRunner.initialPoint, color: .red, radius: 3)
         plot(gameRunner.allPoints)
+        pointPlotter.plot([gameRunner.initialPoint], color: .red, radius: 3) { _ in
+            DispatchQueue.main.async {
+                self.pointPlotView.needsDisplay = true
+            }
+        }
         
         iterationLabel.integerValue = gameRunner.iteration
     }
@@ -87,13 +91,19 @@ public class ChaosGamePlotViewController : NSViewController {
             return
         }
         
-        plot(gameRunner.flushAccumulatedPoints())
-        pointPlotView.setNeedsDisplay()
+        plot(gameRunner.flushAccumulatedPoints()) { rects in
+            DispatchQueue.main.async {
+                for dirtyRect in rects {
+                    self.pointPlotView.setNeedsDisplay(dirtyRect)
+                }
+            }
+        }
+        
         iterationLabel.integerValue = gameRunner.iteration
     }
     
     
-    private func plot(_ points: [CGPoint]) {
-        pointPlotter.plot(points, color: .white, radius: 1)
+    private func plot(_ points: [CGPoint], completion: (([CGRect]) -> Void)? = nil) {
+        pointPlotter.plot(points, color: .white, radius: 0.5, completion: completion)
     }
 }

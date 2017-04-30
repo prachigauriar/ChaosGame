@@ -24,6 +24,7 @@
 		4C2D18A01EB5892400C2B29B /* PointPlotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D189F1EB5892400C2B29B /* PointPlotter.swift */; };
 		4C2D18A31EB62E8400C2B29B /* CGGeometry+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */; };
 		4C2D18AB1EB637BF00C2B29B /* NSImage+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18AA1EB637BF00C2B29B /* NSImage+Drawing.swift */; };
+		4C2D18AD1EB645BF00C2B29B /* ImageDataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18AC1EB645BF00C2B29B /* ImageDataSourceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		4C2D189F1EB5892400C2B29B /* PointPlotter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointPlotter.swift; sourceTree = "<group>"; };
 		4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGGeometry+Convenience.swift"; sourceTree = "<group>"; };
 		4C2D18AA1EB637BF00C2B29B /* NSImage+Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Drawing.swift"; sourceTree = "<group>"; };
+		4C2D18AC1EB645BF00C2B29B /* ImageDataSourceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataSourceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				4C2D18891EB5184900C2B29B /* PointPlotView.swift */,
+				4C2D18AC1EB645BF00C2B29B /* ImageDataSourceView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				4C2D18961EB5218A00C2B29B /* PolygonVertexSelector.swift in Sources */,
 				4C2D188E1EB5184900C2B29B /* IterativeGenerator.swift in Sources */,
 				4C2D18941EB51EDA00C2B29B /* ChaosGameSettings.swift in Sources */,
+				4C2D18AD1EB645BF00C2B29B /* ImageDataSourceView.swift in Sources */,
 				4C2D189E1EB569D100C2B29B /* ChaosGamePlotViewController.swift in Sources */,
 				4C2D18981EB5411B00C2B29B /* ChaosGameSettingsViewController.swift in Sources */,
 			);
