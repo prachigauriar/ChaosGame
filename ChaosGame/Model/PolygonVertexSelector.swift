@@ -34,10 +34,10 @@ public struct RandomPolygonVertexSelector : PolygonVertexSelector {
         }
         
         if keptChoiceCount > 0 {
-            previouslyChosenIndexes.append(index)
+            previouslyChosenIndexes.insert(index, at: 0)
             
             if previouslyChosenIndexes.count > keptChoiceCount {
-                previouslyChosenIndexes.remove(at: 0)
+                previouslyChosenIndexes.remove(at: previouslyChosenIndexes.count - 1)
             }
         }
         
@@ -56,7 +56,25 @@ public extension RandomPolygonVertexSelector {
     
     public static func nonRepeatingVertexSelector(with polygon: Polygon) -> RandomPolygonVertexSelector {
         return RandomPolygonVertexSelector(polygon: polygon, keptChoiceCount: 1) { (index, previouslyChosenIndexes) -> Bool in
-            return index != previouslyChosenIndexes.last
+            guard !previouslyChosenIndexes.isEmpty else {
+                return true
+            }
+            
+            return index != previouslyChosenIndexes[0]
+        }
+    }
+    
+    
+    public static func notOneCounterClockwisePlaceAwayVertexSelector(with polygon: Polygon) -> RandomPolygonVertexSelector {
+        return RandomPolygonVertexSelector(polygon: polygon, keptChoiceCount: 1) { (index, previouslyChosenIndexes) -> Bool in
+            guard !previouslyChosenIndexes.isEmpty else {
+                return true
+            }
+
+            let lastIndex = previouslyChosenIndexes[0]
+            let vertexCount = polygon.vertices.count
+            
+            return (lastIndex % vertexCount) != ((index + 1) % vertexCount)
         }
     }
 }

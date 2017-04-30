@@ -6,13 +6,13 @@
 //  Copyright © 2017 Prachi Gauriar. All rights reserved.
 //
 
-import CoreGraphics
-import Foundation
+import Cocoa
 
 
 public enum VertexSelectionStrategy : Int {
     case random
     case nonRepeating
+    case notOneCounterClockwisePlaceAway
 }
 
 
@@ -55,6 +55,8 @@ public struct ChaosGameSettings {
             vertexSelector = RandomPolygonVertexSelector.anyVertexSelector(with: polygon)
         case .nonRepeating:
             vertexSelector = RandomPolygonVertexSelector.nonRepeatingVertexSelector(with: polygon)
+        case .notOneCounterClockwisePlaceAway:
+            vertexSelector = RandomPolygonVertexSelector.notOneCounterClockwisePlaceAwayVertexSelector(with: polygon)
         }
         
         let generator = ChaosGamePointGenerator(initialPoint: CGPoint.randomPoint(in: boundingRect),
