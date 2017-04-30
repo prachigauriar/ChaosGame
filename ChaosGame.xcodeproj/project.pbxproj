@@ -21,6 +21,9 @@
 		4C2D189A1EB5576C00C2B29B /* ChaosGameRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18991EB5576C00C2B29B /* ChaosGameRunner.swift */; };
 		4C2D189C1EB5588400C2B29B /* ConcurrentAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D189B1EB5588400C2B29B /* ConcurrentAccessor.swift */; };
 		4C2D189E1EB569D100C2B29B /* ChaosGamePlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D189D1EB569D100C2B29B /* ChaosGamePlotViewController.swift */; };
+		4C2D18A01EB5892400C2B29B /* PointPlotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D189F1EB5892400C2B29B /* PointPlotter.swift */; };
+		4C2D18A31EB62E8400C2B29B /* CGGeometry+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */; };
+		4C2D18AB1EB637BF00C2B29B /* NSImage+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18AA1EB637BF00C2B29B /* NSImage+Drawing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		4C2D18991EB5576C00C2B29B /* ChaosGameRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaosGameRunner.swift; sourceTree = "<group>"; };
 		4C2D189B1EB5588400C2B29B /* ConcurrentAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentAccessor.swift; sourceTree = "<group>"; };
 		4C2D189D1EB569D100C2B29B /* ChaosGamePlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaosGamePlotViewController.swift; sourceTree = "<group>"; };
+		4C2D189F1EB5892400C2B29B /* PointPlotter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointPlotter.swift; sourceTree = "<group>"; };
+		4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGGeometry+Convenience.swift"; sourceTree = "<group>"; };
+		4C2D18AA1EB637BF00C2B29B /* NSImage+Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Drawing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				4C2D187B1EB5184900C2B29B /* Application */,
+				4C2D18A11EB62E6600C2B29B /* Extensions */,
 				4C2D18801EB5184900C2B29B /* Model */,
 				4C2D187E1EB5184900C2B29B /* Controller */,
 				4C2D18881EB5184900C2B29B /* View */,
@@ -110,6 +117,7 @@
 				4C2D18811EB5184900C2B29B /* ChaosGamePointGenerator.swift */,
 				4C2D18931EB51EDA00C2B29B /* ChaosGameSettings.swift */,
 				4C2D18991EB5576C00C2B29B /* ChaosGameRunner.swift */,
+				4C2D189F1EB5892400C2B29B /* PointPlotter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -129,6 +137,15 @@
 				4C2D18891EB5184900C2B29B /* PointPlotView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4C2D18A11EB62E6600C2B29B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */,
+				4C2D18AA1EB637BF00C2B29B /* NSImage+Drawing.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,9 +222,12 @@
 				4C2D189A1EB5576C00C2B29B /* ChaosGameRunner.swift in Sources */,
 				4C2D188D1EB5184900C2B29B /* ChaosGamePointGenerator.swift in Sources */,
 				4C2D188F1EB5184900C2B29B /* Polygon.swift in Sources */,
+				4C2D18A31EB62E8400C2B29B /* CGGeometry+Convenience.swift in Sources */,
+				4C2D18A01EB5892400C2B29B /* PointPlotter.swift in Sources */,
 				4C2D18921EB5184900C2B29B /* PointPlotView.swift in Sources */,
 				4C2D188A1EB5184900C2B29B /* AppDelegate.swift in Sources */,
 				4C2D189C1EB5588400C2B29B /* ConcurrentAccessor.swift in Sources */,
+				4C2D18AB1EB637BF00C2B29B /* NSImage+Drawing.swift in Sources */,
 				4C2D188C1EB5184900C2B29B /* ChaosGameViewController.swift in Sources */,
 				4C2D18961EB5218A00C2B29B /* PolygonVertexSelector.swift in Sources */,
 				4C2D188E1EB5184900C2B29B /* IterativeGenerator.swift in Sources */,

@@ -19,6 +19,8 @@ public class ChaosGamePlotViewController : NSViewController {
         }
     }
 
+    private var pointPlotter: PointPlotter!
+    
     
     // Controller State
     private lazy var iterationFormatter: NumberFormatter = {
@@ -31,13 +33,19 @@ public class ChaosGamePlotViewController : NSViewController {
 
     
     // View
-    @IBOutlet weak var pointPlotView: PointPlotView!
+    @IBOutlet weak var pointPlotView: NSImageView!
     @IBOutlet weak var iterationLabel: NSTextField!
     
     
-    // MARK: - Lifecycle
+    // MARK: -
     
     override public func viewDidLayout() {
+        guard pointPlotView.bounds.area != 0 else {
+            return
+        }
+                
+        pointPlotter = PointPlotter(size: pointPlotView.bounds.size, backgroundColor: .black)
+        pointPlotView.image = pointPlotter.image
         reset()
     }
     
@@ -59,36 +67,33 @@ public class ChaosGamePlotViewController : NSViewController {
     }
     
     
+    public func reset() {
+        pointPlotter.removeAllPoints()
+        
+        guard let gameRunner = gameRunner else {
+            return
+        }
+        
+        pointPlotter.plot(gameRunner.polygon.vertices, color: .blue, radius: 5)
+        pointPlotter.plot(gameRunner.initialPoint, color: .red, radius: 3)
+        plot(gameRunner.allPoints)
+        
+        iterationLabel.integerValue = gameRunner.iteration
+    }
+
+    
     private func updateInterface() {
         guard let gameRunner = gameRunner else {
             return
         }
         
-        let accumulatedPoints = gameRunner.flushAccumulatedPoints()
-        for point in accumulatedPoints {
-            pointPlotView.addPoint(point)
-        }
+        plot(gameRunner.flushAccumulatedPoints())
+        pointPlotView.setNeedsDisplay()
         iterationLabel.integerValue = gameRunner.iteration
     }
     
     
-    public func reset() {
-        pointPlotView.removeAllPoints()
-        
-        guard let gameRunner = gameRunner else {
-            return
-        }
-        
-        for point in gameRunner.polygon.vertices {
-            pointPlotView.addEmphasizedPoint(point, color: .blue)
-        }
-        
-        pointPlotView.addEmphasizedPoint(gameRunner.initialPoint, color: .red)
-        
-        for point in gameRunner.allPoints {
-            pointPlotView.addPoint(point)
-        }
-        
-        iterationLabel.integerValue = gameRunner.iteration
+    private func plot(_ points: [CGPoint]) {
+        pointPlotter.plot(points, color: .white, radius: 1)
     }
 }

@@ -39,7 +39,7 @@ class PointPlotView : NSView {
     
     
     public func addPoint(_ point: CGPoint) {
-        addPoint(point, sideLength: 2, fillColor: .black) { (context, rect) in
+        addPoint(point, sideLength: 1, fillColor: .black) { (context, rect) in
             context.fill(rect)
         }
     }

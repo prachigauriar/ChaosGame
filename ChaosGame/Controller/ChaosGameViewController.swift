@@ -98,7 +98,7 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
     
     @IBAction func reset(_ sender: NSButton?) {
         stop()
-        plotViewController.reset()
+        initializeGameRunner()
     }
     
     
@@ -124,58 +124,6 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
         toggleGenerationButton.title = NSLocalizedString("Start", comment: "title of button that starts the Chaos Game")
         settingsViewController.areControlsAffectingSettingsEnabled = true
     }
-    
-//    // MARK: - Settings UI
-//
-//    
-//    func updateSettingsUI() {
-//        vertexCountLabel.text = "\(timedGenerator.generator.polygon.vertices.count)"
-//        
-//        if isRunning {
-//            vertexCountStepper.isEnabled = false
-//            toggleGenerationButton.setTitle(NSLocalizedString("Stop", comment: "Title for button that stops point generation"), for: .normal)
-//        } else {
-//            vertexCountStepper.isEnabled = true
-//            toggleGenerationButton.setTitle(NSLocalizedString("Start", comment: "Title for button that starts point generation"), for: .normal)
-//        }
-//    }
-//    
-//    
-//    // MARK: - Generator UI
-//
-//    @IBAction func resetGenerator() {
-//        if isRunning {
-//            toggleGeneration()
-//        }
-//        
-//        timedGenerator = makeGenerator()
-//        resetPlotView()
-//    }
-//    
-//    
-//    @IBAction func toggleGeneration() {
-//        if !isRunning {
-//            timedGenerator.start()
-//            displayLink.add(to: .current, forMode: .defaultRunLoopMode)
-//        } else {
-//            timedGenerator.stop()
-//            displayLink.remove(from: .current, forMode: .defaultRunLoopMode)
-//        }
-//        
-//        updateSettingsUI()
-//    }
-//    
-//    
-//    private func updatePlot(with point: CGPoint) {
-//        DispatchQueue.main.async {
-//            self.pointPlotView.addPoint(point)
-//        }
-//    }
-//    
-//    
-//    @objc private func updateIterationLabel() {
-//        iterationLabel.text = iterationFormatter.string(from: timedGenerator.generator.iteration as NSNumber)
-//    }
 }
 
 

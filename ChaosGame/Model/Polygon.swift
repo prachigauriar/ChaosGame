@@ -35,12 +35,7 @@ public extension Polygon {
 }
 
 
-public extension CGRect {
-    public var center: CGPoint {
-        return CGPoint(x: midX, y: midY)
-    }
-    
-    
+public extension CGRect {    
     public func contains(_ polygon: Polygon) -> Bool {
         return polygon.vertices.first { !contains($0) } == nil
     }
