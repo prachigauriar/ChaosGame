@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -653,7 +656,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ChaosGame" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
@@ -665,8 +668,9 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="750" height="500"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="750" height="500"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -676,18 +680,369 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--Chaos Game View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ChaosGameViewController" customModule="ChaosGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="r4H-Or-bTv">
+                                <rect key="frame" x="8" y="468" width="484" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="8tK-3F-SDR"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Ib3-ws-Yup" kind="embed" identifier="ChaosGameSettingsViewControllerEmbedSegue" id="fCW-f5-iGj"/>
+                                </connections>
+                            </containerView>
+                            <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wae-QB-Nvo">
+                                <rect key="frame" x="177" y="439" width="146" height="21"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a08-00-ZiL">
+                                        <rect key="frame" x="-6" y="-7" width="75" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hSc-83-JtO">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="reset:" target="XfG-lQ-9wD" id="AwD-Z2-1kN"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cxd-2u-DyR">
+                                        <rect key="frame" x="77" y="-7" width="75" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bHd-hV-TXL">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="toggleGeneration:" target="XfG-lQ-9wD" id="CoC-Dt-yA4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="a08-00-ZiL" firstAttribute="width" secondItem="cxd-2u-DyR" secondAttribute="width" id="LVC-f4-PMr"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="7eN-Wc-GqH">
+                                <rect key="frame" x="0.0" y="0.0" width="500" height="431"/>
+                                <connections>
+                                    <segue destination="ENY-co-YzI" kind="embed" identifier="ChaosGamePlotViewControllerEmbedSegue" id="pI8-4x-Mf4"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="wae-QB-Nvo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="r4H-Or-bTv" secondAttribute="leading" id="40U-bv-0hq"/>
+                            <constraint firstItem="7eN-Wc-GqH" firstAttribute="top" secondItem="wae-QB-Nvo" secondAttribute="bottom" constant="8" id="5QY-hj-CBB"/>
+                            <constraint firstItem="r4H-Or-bTv" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="8" id="Hot-a0-1aV"/>
+                            <constraint firstItem="7eN-Wc-GqH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Mac-HM-M7s"/>
+                            <constraint firstAttribute="trailing" secondItem="r4H-Or-bTv" secondAttribute="trailing" constant="8" id="Myx-ev-iP8"/>
+                            <constraint firstItem="wae-QB-Nvo" firstAttribute="centerX" secondItem="r4H-Or-bTv" secondAttribute="centerX" id="UM2-Ve-hA6"/>
+                            <constraint firstItem="wae-QB-Nvo" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="r4H-Or-bTv" secondAttribute="trailing" id="rza-Ia-kPd"/>
+                            <constraint firstAttribute="bottom" secondItem="7eN-Wc-GqH" secondAttribute="bottom" id="t0r-iD-Rry"/>
+                            <constraint firstAttribute="trailing" secondItem="7eN-Wc-GqH" secondAttribute="trailing" id="t6h-WZ-RmC"/>
+                            <constraint firstItem="wae-QB-Nvo" firstAttribute="top" secondItem="r4H-Or-bTv" secondAttribute="bottom" constant="8" symbolic="YES" id="wRa-KV-zjg"/>
+                            <constraint firstItem="r4H-Or-bTv" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="x9Z-aO-t2Z"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="resetButton" destination="a08-00-ZiL" id="ycr-dO-9cg"/>
+                        <outlet property="toggleGenerationButton" destination="cxd-2u-DyR" id="gns-Xd-pZX"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="927"/>
+        </scene>
+        <!--Chaos Game Settings View Controller-->
+        <scene sceneID="IC4-nr-IEL">
+            <objects>
+                <viewController id="Ib3-ws-Yup" customClass="ChaosGameSettingsViewController" customModule="ChaosGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="qpa-uv-caR">
+                        <rect key="frame" x="0.0" y="0.0" width="764" height="24"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Nd-be-GhW" userLabel="Settings Stack">
+                                <rect key="frame" x="0.0" y="0.0" width="764" height="24"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AK9-Nb-c48" userLabel="Vertices Stack">
+                                        <rect key="frame" x="0.0" y="2.5" width="88" height="19"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHx-E4-C2R">
+                                                <rect key="frame" x="-2" y="2.5" width="51" height="14"/>
+                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vertices:" id="xh4-s0-KcR">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jZd-oa-GcE" userLabel="Vertices Stepper Stack">
+                                                <rect key="frame" x="55" y="0.0" width="33" height="19"/>
+                                                <subviews>
+                                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QrP-NR-bfa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="unq-as-t0M"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="3" drawsBackground="YES" usesSingleLineMode="YES" id="Pge-Y2-JPi">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="GCa-DZ-gYx">
+                                                                <real key="minimum" value="3"/>
+                                                                <real key="maximum" value="10"/>
+                                                            </numberFormatter>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <action selector="takeVertexCountFrom:" target="Ib3-ws-Yup" id="uPj-5f-C0F"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IBq-HM-qZc">
+                                                        <rect key="frame" x="20" y="-2" width="15" height="22"/>
+                                                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" minValue="3" maxValue="8" doubleValue="3" id="wCn-VK-UW0"/>
+                                                        <connections>
+                                                            <action selector="takeVertexCountFrom:" target="Ib3-ws-Yup" id="KIu-AL-z5A"/>
+                                                        </connections>
+                                                    </stepper>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="sHx-E4-C2R" firstAttribute="baseline" secondItem="QrP-NR-bfa" secondAttribute="baseline" id="9hX-vr-JUk"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AzS-qZ-9yE" userLabel="Distance Factor Stack">
+                                        <rect key="frame" x="98" y="2.5" width="154" height="19"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDV-VR-eCv">
+                                                <rect key="frame" x="-2" y="3" width="90" height="14"/>
+                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Distance Factor:" id="8yJ-O1-7ad">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B74-Qu-I7k">
+                                                <rect key="frame" x="94" y="0.0" width="60" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="i6K-Ss-Hlt"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0.88888" drawsBackground="YES" usesSingleLineMode="YES" id="yp4-mr-jjm">
+                                                    <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" alwaysShowsDecimalSeparator="YES" minimumIntegerDigits="1" maximumIntegerDigits="1" maximumFractionDigits="6" id="PVA-YB-Vnn">
+                                                        <real key="minimum" value="0.01"/>
+                                                        <real key="maximum" value="0.98999999999999999"/>
+                                                    </numberFormatter>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <action selector="takeDistanceFactorFrom:" target="Ib3-ws-Yup" id="SIa-2V-Y8L"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="aDV-VR-eCv" firstAttribute="baseline" secondItem="B74-Qu-I7k" secondAttribute="baseline" id="FZo-2b-VXw"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uA4-44-t75" userLabel="Vertex Selection Strategy Stack">
+                                        <rect key="frame" x="262" y="2.5" width="258" height="19"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPs-i0-WLg">
+                                                <rect key="frame" x="-2" y="3" width="141" height="14"/>
+                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vertex Selection Strategy:" id="JI1-2y-kaL">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wAZ-sf-Wgb">
+                                                <rect key="frame" x="142" y="-2" width="119" height="22"/>
+                                                <popUpButtonCell key="cell" type="push" title="Non-Repeating" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="XdA-gG-3oD" id="4qV-G3-RBU">
+                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <menu key="menu" id="Zr6-Xw-9z5">
+                                                        <items>
+                                                            <menuItem title="Random" id="i8S-oj-Y0t"/>
+                                                            <menuItem title="Non-Repeating" state="on" id="XdA-gG-3oD"/>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="takeSelectionStrategyFrom:" target="Ib3-ws-Yup" id="YR3-Cp-jYV"/>
+                                                </connections>
+                                            </popUpButton>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="dPs-i0-WLg" firstAttribute="baseline" secondItem="wAZ-sf-Wgb" secondAttribute="baseline" id="efC-Kx-kNT"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLR-6c-tgR" userLabel="Iteration Speed Stack">
+                                        <rect key="frame" x="530" y="5.5" width="234" height="14"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6R1-HK-BL9">
+                                                <rect key="frame" x="-2" y="0.0" width="88" height="14"/>
+                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Iteration Speed:" id="Jdj-0d-FjE">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pds-IT-l6r">
+                                                <rect key="frame" x="92" y="-0.5" width="142" height="15"/>
+                                                <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" minValue="1" maxValue="120" doubleValue="120" tickMarkPosition="below" sliderType="linear" id="ibF-Iv-1fl"/>
+                                                <connections>
+                                                    <action selector="takeFrequencyFrom:" target="Ib3-ws-Yup" id="ZzX-hq-wVJ"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="aDV-VR-eCv" firstAttribute="baseline" secondItem="dPs-i0-WLg" secondAttribute="baseline" id="QLh-b8-V7e"/>
+                                    <constraint firstItem="sHx-E4-C2R" firstAttribute="baseline" secondItem="aDV-VR-eCv" secondAttribute="baseline" id="qJh-XV-0bc"/>
+                                    <constraint firstItem="dPs-i0-WLg" firstAttribute="baseline" secondItem="6R1-HK-BL9" secondAttribute="baseline" id="zxX-RC-2HV"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="2Nd-be-GhW" secondAttribute="bottom" id="SaY-QS-KUe"/>
+                            <constraint firstItem="2Nd-be-GhW" firstAttribute="leading" secondItem="qpa-uv-caR" secondAttribute="leading" id="gX8-O5-CXB"/>
+                            <constraint firstAttribute="trailing" secondItem="2Nd-be-GhW" secondAttribute="trailing" id="oeC-OD-yZc"/>
+                            <constraint firstItem="2Nd-be-GhW" firstAttribute="top" secondItem="qpa-uv-caR" secondAttribute="top" id="xud-ct-cCU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="distanceFactorField" destination="B74-Qu-I7k" id="3sN-KT-HQP"/>
+                        <outlet property="frequencySlider" destination="pds-IT-l6r" id="osV-9a-Aai"/>
+                        <outlet property="vertexCountField" destination="QrP-NR-bfa" id="iJ0-vh-5Xf"/>
+                        <outlet property="vertexCountStepper" destination="IBq-HM-qZc" id="kTB-72-QF0"/>
+                        <outlet property="vertexSelectionStrategyPopUpButton" destination="wAZ-sf-Wgb" id="IUG-Gg-RrV"/>
+                    </connections>
+                </viewController>
+                <customObject id="hcd-NU-YB7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822" y="698"/>
+        </scene>
+        <!--Chaos Game Plot View Controller-->
+        <scene sceneID="ywl-fX-JXJ">
+            <objects>
+                <viewController id="ENY-co-YzI" customClass="ChaosGamePlotViewController" customModule="ChaosGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="sJp-qt-32U">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="dhK-gm-toe" customClass="PointPlotView" customModule="ChaosGame" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                            </customView>
+                            <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y8e-Sn-fDI">
+                                <rect key="frame" x="8" y="8" width="85" height="14"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvl-W4-oFW">
+                                        <rect key="frame" x="-2" y="0.0" width="56" height="14"/>
+                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Iteration:" id="Clj-ri-d0n">
+                                            <font key="font" metaFont="systemBold" size="11"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUV-cA-A49">
+                                        <rect key="frame" x="54" y="0.0" width="33" height="14"/>
+                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="seL-vI-4Vi">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="y8e-Sn-fDI" firstAttribute="leading" secondItem="sJp-qt-32U" secondAttribute="leading" constant="8" id="3Ov-w4-J3x"/>
+                            <constraint firstItem="dhK-gm-toe" firstAttribute="top" secondItem="sJp-qt-32U" secondAttribute="top" id="8X7-1y-64E"/>
+                            <constraint firstAttribute="bottom" secondItem="dhK-gm-toe" secondAttribute="bottom" id="CCz-i5-TJY"/>
+                            <constraint firstAttribute="trailing" secondItem="dhK-gm-toe" secondAttribute="trailing" id="R9K-Wx-03Q"/>
+                            <constraint firstItem="dhK-gm-toe" firstAttribute="leading" secondItem="sJp-qt-32U" secondAttribute="leading" id="RNp-ie-9fd"/>
+                            <constraint firstAttribute="bottom" secondItem="y8e-Sn-fDI" secondAttribute="bottom" constant="8" id="V0z-AQ-o0s"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="iterationLabel" destination="sUV-cA-A49" id="r1r-4D-KMW"/>
+                        <outlet property="pointPlotView" destination="dhK-gm-toe" id="qap-Su-AQa"/>
+                    </connections>
+                </viewController>
+                <customObject id="D79-DS-k54" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="665" y="1055"/>
         </scene>
     </scenes>
 </document>
