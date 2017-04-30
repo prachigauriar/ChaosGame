@@ -23,10 +23,11 @@ public extension Polygon {
     public static func regularPolygon(withVertexCount vertexCount: Int, inside rect: CGRect) -> Polygon {
         let r = min(rect.width, rect.height) / 2
         let baseTheta = 2 * .pi / CGFloat(vertexCount)
+        let offset = vertexCount % 2 == 0 ? baseTheta / 2 : .pi / 2
         
         let center = rect.center
         let vertices = (0 ..< vertexCount).map { i -> CGPoint in
-            let theta = CGFloat(i) * baseTheta
+            let theta = CGFloat(i) * baseTheta + offset
             return CGPoint(x: r * cos(theta) + center.x, y: r * sin(theta) + center.y)
         }
         

@@ -19,8 +19,6 @@ public class ChaosGamePlotViewController : NSViewController {
         }
     }
 
-    private var pointPlotter: PointPlotter!
-    
     
     // Controller State
     private lazy var iterationFormatter: NumberFormatter = {
@@ -33,19 +31,22 @@ public class ChaosGamePlotViewController : NSViewController {
 
     
     // View
-    @IBOutlet weak var pointPlotView: ImageDataSourceView!
+    @IBOutlet weak var pointPlotView: PointPlotView!
     @IBOutlet weak var iterationLabel: NSTextField!
     
     
     // MARK: -
     
-    override public func viewDidLayout() {
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
+    public override func viewDidLayout() {
         guard pointPlotView.bounds.area != 0 else {
             return
         }
                 
-        pointPlotter = PointPlotter(size: pointPlotView.bounds.size, backgroundColor: .black)
-        pointPlotView.imageAccessor = pointPlotter.imageAccessor
         reset()
     }
     
@@ -56,7 +57,7 @@ public class ChaosGamePlotViewController : NSViewController {
         }
         
         interfaceUpdateTimer?.invalidate()
-        interfaceUpdateTimer = Timer.scheduledTimer(withTimeInterval: 1 / 30.0, repeats: true) { [unowned self] _ in
+        interfaceUpdateTimer = Timer.scheduledTimer(withTimeInterval: 1 / 60.0, repeats: true) { [unowned self] _ in
             self.updateInterface()
         }
     }
@@ -68,20 +69,15 @@ public class ChaosGamePlotViewController : NSViewController {
     
     
     public func reset() {
-        pointPlotter.removeAllPoints()
+        pointPlotView.removeAllPoints()
         
         guard let gameRunner = gameRunner else {
             return
         }
         
-        pointPlotter.plot(gameRunner.polygon.vertices, color: .blue, radius: 5)
+        pointPlotView.plot(gameRunner.polygon.vertices, color: .blue, radius: 5)
         plot(gameRunner.allPoints)
-        pointPlotter.plot([gameRunner.initialPoint], color: .red, radius: 3) { _ in
-            DispatchQueue.main.async {
-                self.pointPlotView.needsDisplay = true
-            }
-        }
-        
+        pointPlotView.plot([gameRunner.initialPoint], color: .red, radius: 3)
         iterationLabel.integerValue = gameRunner.iteration
     }
 
@@ -91,19 +87,12 @@ public class ChaosGamePlotViewController : NSViewController {
             return
         }
         
-        plot(gameRunner.flushAccumulatedPoints()) { rects in
-            DispatchQueue.main.async {
-                for dirtyRect in rects {
-                    self.pointPlotView.setNeedsDisplay(dirtyRect)
-                }
-            }
-        }
-        
+        plot(gameRunner.flushAccumulatedPoints())
         iterationLabel.integerValue = gameRunner.iteration
     }
     
     
-    private func plot(_ points: [CGPoint], completion: (([CGRect]) -> Void)? = nil) {
-        pointPlotter.plot(points, color: .white, radius: 0.5, completion: completion)
+    private func plot(_ points: [CGPoint]) {
+        pointPlotView.plot(points, color: .white, radius: 0.5)
     }
 }

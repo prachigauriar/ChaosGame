@@ -55,7 +55,7 @@ public class ChaosGameSettingsViewController : NSViewController, NSTextFieldDele
         super.viewDidLoad()
         
         vertexCountStepper.minValue = 3
-        vertexCountStepper.maxValue = 8
+        vertexCountStepper.maxValue = 20
         
         frequencySlider.minValue = minimumFrequency
         frequencySlider.maxValue = maximumFrequency

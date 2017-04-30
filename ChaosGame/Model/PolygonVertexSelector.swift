@@ -36,7 +36,7 @@ public struct RandomPolygonVertexSelector : PolygonVertexSelector {
         if keptChoiceCount > 0 {
             previouslyChosenIndexes.append(index)
             
-            if previouslyChosenIndexes.count == keptChoiceCount {
+            if previouslyChosenIndexes.count > keptChoiceCount {
                 previouslyChosenIndexes.remove(at: 0)
             }
         }
