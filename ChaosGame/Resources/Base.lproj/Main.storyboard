@@ -771,14 +771,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="24"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Nd-be-GhW" userLabel="Settings Stack">
+                            <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Nd-be-GhW" userLabel="Settings Stack">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="24"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AK9-Nb-c48" userLabel="Vertices Stack">
-                                        <rect key="frame" x="0.0" y="2.5" width="88" height="19"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="88" height="19"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHx-E4-C2R">
-                                                <rect key="frame" x="-2" y="2.5" width="51" height="14"/>
+                                                <rect key="frame" x="-2" y="3" width="51" height="14"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vertices:" id="xh4-s0-KcR">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -837,7 +837,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AzS-qZ-9yE" userLabel="Distance Factor Stack">
-                                        <rect key="frame" x="98" y="2.5" width="154" height="19"/>
+                                        <rect key="frame" x="98" y="0.0" width="154" height="19"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDV-VR-eCv">
                                                 <rect key="frame" x="-2" y="3" width="90" height="14"/>
@@ -879,10 +879,10 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uA4-44-t75" userLabel="Vertex Selection Strategy Stack">
-                                        <rect key="frame" x="262" y="2.5" width="390" height="19"/>
+                                        <rect key="frame" x="262" y="1" width="390" height="18"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPs-i0-WLg">
-                                                <rect key="frame" x="-2" y="3" width="141" height="14"/>
+                                                <rect key="frame" x="-2" y="2" width="141" height="14"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vertex Selection Strategy:" id="JI1-2y-kaL">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -890,15 +890,15 @@
                                                 </textFieldCell>
                                             </textField>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wAZ-sf-Wgb">
-                                                <rect key="frame" x="142" y="-2" width="251" height="22"/>
-                                                <popUpButtonCell key="cell" type="push" title="Random" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="i8S-oj-Y0t" id="4qV-G3-RBU">
+                                                <rect key="frame" x="142" y="-3" width="251" height="22"/>
+                                                <popUpButtonCell key="cell" type="push" title="Random" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="i8S-oj-Y0t" id="4qV-G3-RBU">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <menu key="menu" id="Zr6-Xw-9z5">
                                                         <items>
-                                                            <menuItem title="Random" id="i8S-oj-Y0t"/>
-                                                            <menuItem title="Non-Repeating" state="on" id="XdA-gG-3oD"/>
-                                                            <menuItem title="Not One Place Away (Counter-Clockwise)" id="qYc-Ih-HAg">
+                                                            <menuItem title="Random" state="on" id="i8S-oj-Y0t"/>
+                                                            <menuItem title="Non-Repeating" id="XdA-gG-3oD"/>
+                                                            <menuItem title="Not One Place Away" id="qYc-Ih-HAg">
                                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                                             </menuItem>
                                                         </items>
@@ -922,7 +922,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLR-6c-tgR" userLabel="Iteration Speed Stack">
-                                        <rect key="frame" x="662" y="5.5" width="234" height="14"/>
+                                        <rect key="frame" x="662" y="3" width="234" height="14"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6R1-HK-BL9">
                                                 <rect key="frame" x="-2" y="0.0" width="88" height="14"/>
@@ -950,11 +950,6 @@
                                         </customSpacing>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="aDV-VR-eCv" firstAttribute="baseline" secondItem="dPs-i0-WLg" secondAttribute="baseline" id="QLh-b8-V7e"/>
-                                    <constraint firstItem="sHx-E4-C2R" firstAttribute="baseline" secondItem="aDV-VR-eCv" secondAttribute="baseline" id="qJh-XV-0bc"/>
-                                    <constraint firstItem="dPs-i0-WLg" firstAttribute="baseline" secondItem="6R1-HK-BL9" secondAttribute="baseline" id="zxX-RC-2HV"/>
-                                </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
@@ -1005,7 +1000,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvl-W4-oFW">
                                         <rect key="frame" x="-2" y="0.0" width="56" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Iteration:" id="Clj-ri-d0n">
-                                            <font key="font" metaFont="systemBold" size="11"/>
+                                            <font key="font" metaFont="smallSystemBold"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
