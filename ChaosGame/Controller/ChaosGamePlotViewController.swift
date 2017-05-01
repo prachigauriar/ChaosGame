@@ -45,7 +45,7 @@ public class ChaosGamePlotViewController : NSViewController {
         return formatter
     }()
 
-    private var interfaceUpdateTimer: Timer?
+    private var interfaceUpdateTimer: QueueTimer?
 
     
     // View
@@ -54,11 +54,6 @@ public class ChaosGamePlotViewController : NSViewController {
     
     
     // MARK: -
-    
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     
     public override func viewDidLayout() {
         guard pointPlotView.bounds.area != 0 else {
@@ -75,7 +70,7 @@ public class ChaosGamePlotViewController : NSViewController {
         }
         
         interfaceUpdateTimer?.invalidate()
-        interfaceUpdateTimer = Timer.scheduledTimer(withTimeInterval: 1 / 60.0, repeats: true) { [unowned self] _ in
+        interfaceUpdateTimer = QueueTimer.scheduledTimer(label: "ChaosGamePlotViewController.interfaceUpdateTimer", interval: 1 / 30) { [unowned self] _ in
             self.updateInterface()
         }
     }

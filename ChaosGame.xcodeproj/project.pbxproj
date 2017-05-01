@@ -18,11 +18,12 @@
 		4C2D18961EB5218A00C2B29B /* PolygonVertexSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18951EB5218A00C2B29B /* PolygonVertexSelector.swift */; };
 		4C2D18981EB5411B00C2B29B /* ChaosGameSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18971EB5411B00C2B29B /* ChaosGameSettingsViewController.swift */; };
 		4C2D189A1EB5576C00C2B29B /* ChaosGameRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18991EB5576C00C2B29B /* ChaosGameRunner.swift */; };
-		4C2D189C1EB5588400C2B29B /* ConcurrentAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D189B1EB5588400C2B29B /* ConcurrentAccessor.swift */; };
 		4C2D189E1EB569D100C2B29B /* ChaosGamePlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D189D1EB569D100C2B29B /* ChaosGamePlotViewController.swift */; };
 		4C2D18A31EB62E8400C2B29B /* CGGeometry+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */; };
 		4C2D18AB1EB637BF00C2B29B /* NSImage+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18AA1EB637BF00C2B29B /* NSImage+Drawing.swift */; };
 		4C2D18AF1EB6865800C2B29B /* PointPlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18AE1EB6865800C2B29B /* PointPlotView.swift */; };
+		4C2D18B21EB6C1BB00C2B29B /* ConcurrentAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18B11EB6C1BB00C2B29B /* ConcurrentAccessor.swift */; };
+		4C2D18B41EB6C1CF00C2B29B /* QueueTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18B31EB6C1CF00C2B29B /* QueueTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,11 +40,12 @@
 		4C2D18951EB5218A00C2B29B /* PolygonVertexSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonVertexSelector.swift; sourceTree = "<group>"; };
 		4C2D18971EB5411B00C2B29B /* ChaosGameSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaosGameSettingsViewController.swift; sourceTree = "<group>"; };
 		4C2D18991EB5576C00C2B29B /* ChaosGameRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaosGameRunner.swift; sourceTree = "<group>"; };
-		4C2D189B1EB5588400C2B29B /* ConcurrentAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentAccessor.swift; sourceTree = "<group>"; };
 		4C2D189D1EB569D100C2B29B /* ChaosGamePlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaosGamePlotViewController.swift; sourceTree = "<group>"; };
 		4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGGeometry+Convenience.swift"; sourceTree = "<group>"; };
 		4C2D18AA1EB637BF00C2B29B /* NSImage+Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Drawing.swift"; sourceTree = "<group>"; };
 		4C2D18AE1EB6865800C2B29B /* PointPlotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointPlotView.swift; sourceTree = "<group>"; };
+		4C2D18B11EB6C1BB00C2B29B /* ConcurrentAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentAccessor.swift; sourceTree = "<group>"; };
+		4C2D18B31EB6C1CF00C2B29B /* QueueTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				4C2D187B1EB5184900C2B29B /* Application */,
 				4C2D18A11EB62E6600C2B29B /* Extensions */,
+				4C2D18B01EB6C1BB00C2B29B /* Utility */,
 				4C2D18801EB5184900C2B29B /* Model */,
 				4C2D187E1EB5184900C2B29B /* Controller */,
 				4C2D18881EB5184900C2B29B /* View */,
@@ -108,7 +111,6 @@
 		4C2D18801EB5184900C2B29B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4C2D189B1EB5588400C2B29B /* ConcurrentAccessor.swift */,
 				4C2D18831EB5184900C2B29B /* Polygon.swift */,
 				4C2D18951EB5218A00C2B29B /* PolygonVertexSelector.swift */,
 				4C2D18821EB5184900C2B29B /* IterativeGenerator.swift */,
@@ -143,6 +145,15 @@
 				4C2D18AA1EB637BF00C2B29B /* NSImage+Drawing.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C2D18B01EB6C1BB00C2B29B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				4C2D18B11EB6C1BB00C2B29B /* ConcurrentAccessor.swift */,
+				4C2D18B31EB6C1CF00C2B29B /* QueueTimer.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,12 +233,13 @@
 				4C2D188F1EB5184900C2B29B /* Polygon.swift in Sources */,
 				4C2D18A31EB62E8400C2B29B /* CGGeometry+Convenience.swift in Sources */,
 				4C2D188A1EB5184900C2B29B /* AppDelegate.swift in Sources */,
-				4C2D189C1EB5588400C2B29B /* ConcurrentAccessor.swift in Sources */,
 				4C2D18AB1EB637BF00C2B29B /* NSImage+Drawing.swift in Sources */,
 				4C2D188C1EB5184900C2B29B /* ChaosGameViewController.swift in Sources */,
 				4C2D18961EB5218A00C2B29B /* PolygonVertexSelector.swift in Sources */,
 				4C2D188E1EB5184900C2B29B /* IterativeGenerator.swift in Sources */,
+				4C2D18B41EB6C1CF00C2B29B /* QueueTimer.swift in Sources */,
 				4C2D18941EB51EDA00C2B29B /* ChaosGameSettings.swift in Sources */,
+				4C2D18B21EB6C1BB00C2B29B /* ConcurrentAccessor.swift in Sources */,
 				4C2D189E1EB569D100C2B29B /* ChaosGamePlotViewController.swift in Sources */,
 				4C2D18981EB5411B00C2B29B /* ChaosGameSettingsViewController.swift in Sources */,
 			);

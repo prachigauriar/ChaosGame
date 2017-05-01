@@ -42,7 +42,7 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
     
     // MARK: - Lifecycle
     
-    override public func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+    public override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {
             return
         }
@@ -53,13 +53,14 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
             settingsViewController.delegate = self
         case "ChaosGamePlotViewControllerEmbedSegue":
             plotViewController = segue.destinationController as! ChaosGamePlotViewController
+            initializeGameRunner()
         default:
             break
         }
     }
+
     
-    
-    override public func viewDidDisappear() {
+    public override func viewDidDisappear() {
         super.viewDidDisappear()
         
         if gameRunner?.isRunning == true {

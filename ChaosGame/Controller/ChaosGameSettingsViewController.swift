@@ -39,12 +39,8 @@ public class ChaosGameSettingsViewController : NSViewController, NSTextFieldDele
     }
     
     private let minimumFrequency: Double = 1
-    private let maximumFrequency: Double = 6000
-    public var frequency: Double = 1 {
-        willSet {
-            precondition(newValue >= minimumFrequency && newValue <= maximumFrequency)
-        }
-        
+    private let maximumFrequency: Double = 960
+    public private(set) var frequency: Double = 1 {
         didSet {
             if isViewLoaded {
                 updateInterface()
@@ -69,7 +65,7 @@ public class ChaosGameSettingsViewController : NSViewController, NSTextFieldDele
     @IBOutlet weak var frequencySlider: NSSlider!
     
     
-    override public func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         vertexCountStepper.minValue = 3
