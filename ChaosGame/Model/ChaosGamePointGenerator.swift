@@ -62,8 +62,8 @@ public class ChaosGamePointGenerator : IterativeGenerator {
     
     
     private func pointBetween(_ point1: CGPoint, and point2: CGPoint, distanceFactor: CGFloat) -> CGPoint {
-        let x = distanceFactor * point1.x + (1 - distanceFactor) * point2.x
-        let y = distanceFactor * point1.y + (1 - distanceFactor) * point2.y        
+        let x = (1 - distanceFactor) * point1.x + distanceFactor * point2.x
+        let y = (1 - distanceFactor) * point1.y + distanceFactor * point2.y
         return CGPoint(x: x, y: y)
     }
 }

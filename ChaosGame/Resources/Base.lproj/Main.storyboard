@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
@@ -768,11 +768,11 @@
             <objects>
                 <viewController id="Ib3-ws-Yup" customClass="ChaosGameSettingsViewController" customModule="ChaosGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="qpa-uv-caR">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="24"/>
+                        <rect key="frame" x="0.0" y="0.0" width="932" height="24"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Nd-be-GhW" userLabel="Settings Stack">
-                                <rect key="frame" x="0.0" y="0.0" width="896" height="24"/>
+                                <rect key="frame" x="0.0" y="0.0" width="932" height="24"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AK9-Nb-c48" userLabel="Vertices Stack">
                                         <rect key="frame" x="0.0" y="0.0" width="88" height="19"/>
@@ -879,7 +879,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uA4-44-t75" userLabel="Vertex Selection Strategy Stack">
-                                        <rect key="frame" x="262" y="1" width="390" height="18"/>
+                                        <rect key="frame" x="262" y="1" width="315" height="18"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPs-i0-WLg">
                                                 <rect key="frame" x="-2" y="2" width="141" height="14"/>
@@ -890,7 +890,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wAZ-sf-Wgb">
-                                                <rect key="frame" x="142" y="-3" width="251" height="22"/>
+                                                <rect key="frame" x="142" y="-3" width="176" height="22"/>
                                                 <popUpButtonCell key="cell" type="push" title="Random" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="i8S-oj-Y0t" id="4qV-G3-RBU">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="smallSystem"/>
@@ -922,7 +922,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLR-6c-tgR" userLabel="Iteration Speed Stack">
-                                        <rect key="frame" x="662" y="3" width="234" height="14"/>
+                                        <rect key="frame" x="587" y="3" width="345" height="14"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6R1-HK-BL9">
                                                 <rect key="frame" x="-2" y="0.0" width="88" height="14"/>
@@ -933,7 +933,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pds-IT-l6r">
-                                                <rect key="frame" x="92" y="-0.5" width="142" height="15"/>
+                                                <rect key="frame" x="92" y="-0.5" width="253" height="15"/>
                                                 <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" minValue="1" maxValue="120" doubleValue="120" tickMarkPosition="below" sliderType="linear" id="ibF-Iv-1fl"/>
                                                 <connections>
                                                     <action selector="takeFrequencyFrom:" target="Ib3-ws-Yup" id="ZzX-hq-wVJ"/>
@@ -981,7 +981,7 @@
                 </viewController>
                 <customObject id="hcd-NU-YB7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="698"/>
+            <point key="canvasLocation" x="840" y="698"/>
         </scene>
         <!--Chaos Game Plot View Controller-->
         <scene sceneID="ywl-fX-JXJ">
@@ -991,9 +991,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qcz-P7-isR" customClass="PointPlotView" customModule="ChaosGame" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                            </customView>
                             <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y8e-Sn-fDI">
                                 <rect key="frame" x="8" y="8" width="85" height="14"/>
                                 <subviews>
@@ -1025,17 +1022,12 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="qcz-P7-isR" secondAttribute="trailing" id="0Uy-mT-tz1"/>
-                            <constraint firstItem="qcz-P7-isR" firstAttribute="leading" secondItem="sJp-qt-32U" secondAttribute="leading" id="1kS-aK-8nb"/>
                             <constraint firstItem="y8e-Sn-fDI" firstAttribute="leading" secondItem="sJp-qt-32U" secondAttribute="leading" constant="8" id="3Ov-w4-J3x"/>
-                            <constraint firstItem="qcz-P7-isR" firstAttribute="top" secondItem="sJp-qt-32U" secondAttribute="top" id="G6g-Ay-Fnd"/>
-                            <constraint firstAttribute="bottom" secondItem="qcz-P7-isR" secondAttribute="bottom" id="ROS-GN-GYF"/>
                             <constraint firstAttribute="bottom" secondItem="y8e-Sn-fDI" secondAttribute="bottom" constant="8" id="V0z-AQ-o0s"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="iterationLabel" destination="sUV-cA-A49" id="r1r-4D-KMW"/>
-                        <outlet property="pointPlotView" destination="qcz-P7-isR" id="DSH-8o-eAn"/>
                     </connections>
                 </viewController>
                 <customObject id="D79-DS-k54" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

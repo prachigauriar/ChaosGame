@@ -25,6 +25,7 @@
 //
 
 import Cocoa
+import SpriteKit
 
 
 public class ChaosGamePlotViewController : NSViewController {
@@ -47,32 +48,41 @@ public class ChaosGamePlotViewController : NSViewController {
 
     private var interfaceUpdateTimer: QueueTimer?
 
+    private var scene: SKScene = {
+        let scene = SKScene(size: CGSize(width: 1000, height: 1000))
+        scene.scaleMode = .fill
+        scene.backgroundColor = .black
+        return scene
+    }()
+    
     
     // View
-    @IBOutlet weak var pointPlotView: PointPlotView!
+    let pointView: SKView = SKView()
     @IBOutlet weak var iterationLabel: NSTextField!
     
     
     // MARK: -
-    
-    public override func viewDidLayout() {
-        guard pointPlotView.bounds.area != 0 else {
-            return
-        }
-                
-        reset()
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        pointView.frame = view.bounds
+        pointView.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
+        view.addSubview(pointView, positioned: .below, relativeTo: iterationLabel)
+        pointView.presentScene(scene)
     }
     
-
+    
     public func startMonitoringGameRunner() {
         guard gameRunner != nil else {
             return
         }
         
         interfaceUpdateTimer?.invalidate()
-        interfaceUpdateTimer = QueueTimer.scheduledTimer(label: "ChaosGamePlotViewController.interfaceUpdateTimer", interval: 1 / 30) { [unowned self] _ in
+        interfaceUpdateTimer = QueueTimer(label: "ChaosGamePlotViewController.interfaceUpdateTimer", interval: 1 / 30) { [unowned self] _ in
             self.updateInterface()
         }
+        
+        interfaceUpdateTimer?.schedule()
     }
     
     
@@ -82,15 +92,15 @@ public class ChaosGamePlotViewController : NSViewController {
     
     
     public func reset() {
-        pointPlotView.removeAllPoints()
+        scene.removeAllChildren()
         
         guard let gameRunner = gameRunner else {
             return
         }
         
-        pointPlotView.plot(gameRunner.polygon.vertices, color: .blue, radius: 5)
+        plot(gameRunner.polygon.vertices, color: .blue, diameter: 10)
         plot(gameRunner.allPoints)
-        pointPlotView.plot([gameRunner.initialPoint], color: .red, radius: 3)
+        plot([gameRunner.initialPoint], color: .red, diameter: 6)
         iterationLabel.integerValue = gameRunner.iteration
     }
 
@@ -100,12 +110,18 @@ public class ChaosGamePlotViewController : NSViewController {
             return
         }
         
-        plot(gameRunner.flushAccumulatedPoints())
-        iterationLabel.integerValue = gameRunner.iteration
+        OperationQueue.main.addOperation {
+            self.plot(gameRunner.flushAccumulatedPoints())
+            self.iterationLabel.integerValue = gameRunner.iteration
+        }
     }
     
     
-    private func plot(_ points: [CGPoint]) {
-        pointPlotView.plot(points, color: .white, radius: 0.5)
+    private func plot(_ points: [CGPoint], color: NSColor = .white, diameter: CGFloat = 1) {
+        for point in points {
+            let node = SKSpriteNode(color: color, size: CGSize(width: diameter, height: diameter))
+            node.position = point
+            scene.addChild(node)
+        }
     }
 }
