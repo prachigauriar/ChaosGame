@@ -83,7 +83,7 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
         }
         
         if let gameRunner = gameRunner {
-            gameRunner.updateInterval = 1 / frequency
+            gameRunner.generationFrequency = Int(frequency)
         }
     }
     
@@ -150,6 +150,6 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
 
 fileprivate extension CGRect {
     fileprivate static var chaosGameBoundingRect: CGRect {
-        return CGRect(x: 0, y: 0, width: 1000, height: 1000).insetBy(dx: 10, dy: 10)
+        return CGRect(x: 0, y: 0, width: 1, height: 1).insetBy(dx: 0.1, dy: 0.1)
     }
 }

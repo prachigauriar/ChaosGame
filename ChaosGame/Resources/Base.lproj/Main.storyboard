@@ -934,7 +934,7 @@
                                             </textField>
                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pds-IT-l6r">
                                                 <rect key="frame" x="92" y="-0.5" width="253" height="15"/>
-                                                <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" minValue="1" maxValue="120" doubleValue="120" tickMarkPosition="below" sliderType="linear" id="ibF-Iv-1fl"/>
+                                                <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" minValue="1" maxValue="60000" doubleValue="1" tickMarkPosition="below" sliderType="linear" id="ibF-Iv-1fl"/>
                                                 <connections>
                                                     <action selector="takeFrequencyFrom:" target="Ib3-ws-Yup" id="ZzX-hq-wVJ"/>
                                                 </connections>

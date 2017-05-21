@@ -35,60 +35,15 @@ public protocol IterativeGenerator {
 }
 
 
-public class TimedIterativeGenerator<Generator : IterativeGenerator> {
-    public let generator: Generator
-    
-    public var updateInterval: TimeInterval = 1 {
-        willSet {
-            precondition(newValue > 0)
+public extension IterativeGenerator {
+    public func generateBatch(size: Int) -> [Output] {
+        precondition(size > 0)
+        
+        var outputBatch: [Output] = []
+        for _ in 0 ..< size {
+            outputBatch.append(generate())
         }
         
-        didSet {
-            timer?.invalidate()
-            scheduleTimer()
-        }
-    }
-    
-    private var timer: QueueTimer?
-    public var updateBlock: ((Generator.Output) -> Void)?
-    public private(set) var isRunning: Bool = false
-
-    
-    public init(generator: Generator, updateBlock: ((Generator.Output) -> Void)? = nil) {
-        self.generator = generator
-        self.updateBlock = updateBlock
-    }
-    
-    
-    public func start() {
-        guard !isRunning else {
-            return
-        }
-        
-        isRunning = true
-        scheduleTimer()
-    }
-    
-    
-    public func stop() {
-        isRunning = false
-    }
-
-    
-    private func scheduleTimer() {
-        guard isRunning else {
-            return
-        }
-
-        let timer = QueueTimer.scheduledTimer(interval: updateInterval) { [weak self] _ in
-            self?.generate()
-        }
-        
-        self.timer = timer
-    }
-
-    
-    private func generate() {
-        updateBlock?(generator.generate())
+        return outputBatch
     }
 }

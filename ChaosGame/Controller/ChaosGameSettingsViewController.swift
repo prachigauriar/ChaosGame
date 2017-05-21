@@ -38,8 +38,6 @@ public class ChaosGameSettingsViewController : NSViewController, NSTextFieldDele
         }
     }
     
-    private let minimumFrequency: Double = 1
-    private let maximumFrequency: Double = 960
     public private(set) var frequency: Double = 1 {
         didSet {
             if isViewLoaded {
@@ -71,8 +69,9 @@ public class ChaosGameSettingsViewController : NSViewController, NSTextFieldDele
         vertexCountStepper.minValue = 3
         vertexCountStepper.maxValue = 20
         
-        frequencySlider.minValue = minimumFrequency
-        frequencySlider.maxValue = maximumFrequency
+        // We’re doing a logarithmic with values between 1 – 60,000
+        frequencySlider.minValue = 0
+        frequencySlider.maxValue = log10(60_000)
         
         updateInterface()
     }
@@ -83,7 +82,7 @@ public class ChaosGameSettingsViewController : NSViewController, NSTextFieldDele
         vertexCountStepper.integerValue = settings.polygonVertexCount
         distanceFactorField.doubleValue = settings.distanceFactor
         vertexSelectionStrategyPopUpButton.selectItem(at: settings.vertexSelectionStrategy.rawValue)
-        frequencySlider.doubleValue = frequency
+        frequencySlider.doubleValue = log10(frequency)
 
         vertexCountField.isEnabled = areControlsAffectingSettingsEnabled
         vertexCountStepper.isEnabled = areControlsAffectingSettingsEnabled
@@ -113,7 +112,7 @@ public class ChaosGameSettingsViewController : NSViewController, NSTextFieldDele
 
     
     @IBAction func takeFrequency(from slider: NSSlider) {
-        frequency = slider.doubleValue
+        frequency = pow(10, slider.doubleValue)
         notifyDelegateOfFrequencyChange()
     }
     

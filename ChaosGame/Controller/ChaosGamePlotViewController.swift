@@ -48,13 +48,7 @@ public class ChaosGamePlotViewController : NSViewController {
 
     private var interfaceUpdateTimer: QueueTimer?
 
-    private var scene: SKScene = {
-        let scene = SKScene(size: CGSize(width: 1000, height: 1000))
-        scene.scaleMode = .fill
-        scene.backgroundColor = .black
-        return scene
-    }()
-    
+    private var scene: SKScene?
     
     // View
     let pointView: SKView = SKView()
@@ -68,7 +62,22 @@ public class ChaosGamePlotViewController : NSViewController {
         pointView.frame = view.bounds
         pointView.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
         view.addSubview(pointView, positioned: .below, relativeTo: iterationLabel)
-        pointView.presentScene(scene)
+    }
+    
+    
+    public override func viewWillAppear() {
+        super.viewWillAppear()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(resetWithDidEndLiveResizeNotification(_:)),
+                                               name: .NSWindowDidEndLiveResize,
+                                               object: self.view.window)
+
+        reset()
+    }
+    
+    
+    public override func viewWillDisappear() {
+        NotificationCenter.default.removeObserver(self, name: .NSWindowDidEndLiveResize, object: nil)
     }
     
     
@@ -92,7 +101,12 @@ public class ChaosGamePlotViewController : NSViewController {
     
     
     public func reset() {
-        scene.removeAllChildren()
+        let scene = SKScene(size: pointView.bounds.size)
+        scene.scaleMode = .fill
+        scene.backgroundColor = .black
+        self.scene = scene
+        pointView.presentScene(scene)
+        
         
         guard let gameRunner = gameRunner else {
             return
@@ -104,6 +118,11 @@ public class ChaosGamePlotViewController : NSViewController {
         iterationLabel.integerValue = gameRunner.iteration
     }
 
+    
+    @objc private func resetWithDidEndLiveResizeNotification(_ note: Notification) {
+        reset()
+    }
+    
     
     private func updateInterface() {
         guard let gameRunner = gameRunner else {
@@ -118,9 +137,23 @@ public class ChaosGamePlotViewController : NSViewController {
     
     
     private func plot(_ points: [CGPoint], color: NSColor = .white, diameter: CGFloat = 1) {
+        guard let scene = scene else {
+            return
+        }
+
+        let affineTransform = AffineTransform.init(scaleByX: scene.size.width, byY: scene.size.height)
         for point in points {
-            let node = SKSpriteNode(color: color, size: CGSize(width: diameter, height: diameter))
-            node.position = point
+            let node: SKNode
+            if diameter == 1 {
+                node = SKSpriteNode(color: color, size: CGSize(width: diameter, height: diameter))
+            } else {
+                let shapeNode = SKShapeNode(circleOfRadius: diameter / 2)
+                shapeNode.fillColor = color
+                shapeNode.lineWidth = 0
+                node = shapeNode
+            }
+            
+            node.position = affineTransform.transform(point)
             scene.addChild(node)
         }
     }

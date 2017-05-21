@@ -28,55 +28,65 @@ import Foundation
 
 
 public class ChaosGameRunner {
-    private let chaosGame: TimedIterativeGenerator<ChaosGamePointGenerator>
+    private let pointGenerator: ChaosGamePointGenerator
     private let accumulatedPointsAccessor: ConcurrentAccessor<[CGPoint]> = ConcurrentAccessor([])
+    private lazy var generationQueue: DispatchQueue = {
+        return DispatchQueue(label: "ChaosGameRunner.generator")
+    }()
+    
+    private var updateTimer: QueueTimer?
     
     
     public var polygon: Polygon {
-        return chaosGame.generator.vertexSelector.polygon
+        return pointGenerator.vertexSelector.polygon
     }
     
     
     public var initialPoint: CGPoint {
-        return chaosGame.generator.initialPoint
+        return pointGenerator.initialPoint
     }
     
     
     public var iteration: Int {
-        return chaosGame.generator.iteration
+        return pointGenerator.iteration
     }
     
-    
-    public var updateInterval: TimeInterval {
-        get {
-            return chaosGame.updateInterval
-        }
-        
-        set {
-            chaosGame.updateInterval = newValue
-        }
-    }
-
     
     public var allPoints: [CGPoint] {
-        return chaosGame.generator.points
-    }
-    
-    
-    var isRunning: Bool {
-        return chaosGame.isRunning
+        return pointGenerator.points
     }
 
     
+    public var isRunning: Bool {
+        return updateTimer?.isScheduled == true
+    }
+    
+
+    // Points/sec to generate
+    public var generationFrequency: Int = 1 {
+        didSet {
+            if generationFrequency != oldValue && isRunning {
+                stop()
+                start()
+            }
+        }
+    }
+    
+    private var generationIteration: Int = 0
+    
     public init(settings: ChaosGameSettings, boundingRect: CGRect) {
-        chaosGame = settings.makeChaosGame(boundingRect: boundingRect)
-        chaosGame.updateBlock = self.add(_:)
+        pointGenerator = settings.makeChaosGame(boundingRect: boundingRect)
     }
     
     
-    private func add(_ point: CGPoint) {
-        accumulatedPointsAccessor.asyncWrite { accumulatedPoints in
-            accumulatedPoints.append(point)
+    deinit {
+        updateTimer?.invalidate()
+    }
+    
+    
+    private func accumulatePoints(_ points: [CGPoint]) {
+        accumulatedPointsAccessor.syncWrite { accumulatedPoints in
+            accumulatedPoints.append(contentsOf: points)
         }
     }
     
@@ -93,12 +103,29 @@ public class ChaosGameRunner {
     
     
     public func start() {
-        chaosGame.start()
+        guard !isRunning else {
+            return
+        }
+        let updateFrequency = min(generationFrequency, 60)
+        updateTimer = QueueTimer.scheduledTimer(interval: 1 / Double(updateFrequency)) { [weak self] timer in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            var batchSize = strongSelf.generationFrequency / updateFrequency
+            if strongSelf.generationIteration == 0 {
+                batchSize += strongSelf.generationFrequency % updateFrequency
+            }
+            
+            let points = strongSelf.pointGenerator.generateBatch(size: batchSize)
+            self?.accumulatePoints(points)
+            strongSelf.generationIteration = (strongSelf.generationIteration + 1) % updateFrequency
+        }
     }
     
     
     public func stop() {
-        chaosGame.stop()
+        updateTimer?.invalidate()
     }
 }
 

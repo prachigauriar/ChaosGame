@@ -32,18 +32,36 @@ public class QueueTimer {
     private let interval: TimeInterval
     private let repeats: Bool
     private var block: ((QueueTimer) -> Void)?
-    private var isScheduled: Bool = false
+    public private(set) var isScheduled: Bool = false
     
     
-    public init(label: String = "", interval: TimeInterval, repeats: Bool = true, block: @escaping (QueueTimer) -> Void) {
-        self.queue = DispatchQueue(label: label)
+    convenience public init(label: String = "", interval: TimeInterval, repeats: Bool = true, block: @escaping (QueueTimer) -> Void) {
+        self.init(queue: DispatchQueue(label: label), interval: interval, repeats: repeats, block: block)
+    }
+    
+    
+    public init(queue: DispatchQueue, interval: TimeInterval, repeats: Bool = true, block: @escaping (QueueTimer) -> Void) {
+        self.queue = queue
         self.interval = interval
         self.repeats = repeats
         self.block = block
     }
+
+    
+    public static func scheduledTimer(queue: DispatchQueue? = nil,
+                                      interval: TimeInterval,
+                                      repeats: Bool = true,
+                                      block: @escaping (QueueTimer) -> Void) -> QueueTimer {
+        let timer = QueueTimer(queue: queue ?? DispatchQueue(label: ""), interval: interval, repeats: repeats, block: block)
+        timer.schedule()
+        return timer
+    }
     
     
-    public static func scheduledTimer(label: String = "", interval: TimeInterval, repeats: Bool = true, block: @escaping (QueueTimer) -> Void) -> QueueTimer {
+    public static func scheduledTimer(label: String,
+                                      interval: TimeInterval,
+                                      repeats: Bool = true,
+                                      block: @escaping (QueueTimer) -> Void) -> QueueTimer {
         let timer = QueueTimer(label: label, interval: interval, repeats: repeats, block: block)
         timer.schedule()
         return timer

@@ -64,7 +64,7 @@ public struct ChaosGameSettings {
     }
     
     
-    public func makeChaosGame(boundingRect: CGRect, updateBlock: ((CGPoint) -> Void)? = nil) -> TimedIterativeGenerator<ChaosGamePointGenerator> {
+    public func makeChaosGame(boundingRect: CGRect) -> ChaosGamePointGenerator {
         let polygon = Polygon.regularPolygon(withVertexCount: polygonVertexCount, inside: boundingRect)
         
         let vertexSelector: PolygonVertexSelector
@@ -77,10 +77,8 @@ public struct ChaosGameSettings {
             vertexSelector = RandomPolygonVertexSelector.notOneCounterClockwisePlaceAwayVertexSelector(with: polygon)
         }
         
-        let generator = ChaosGamePointGenerator(initialPoint: CGPoint.randomPoint(in: boundingRect),
-                                                vertexSelector: vertexSelector, 
-                                                distanceFactor: CGFloat(distanceFactor))
-        
-        return TimedIterativeGenerator(generator: generator, updateBlock: updateBlock)
+        return ChaosGamePointGenerator(initialPoint: CGPoint.randomPoint(in: boundingRect),
+                                       vertexSelector: vertexSelector,
+                                       distanceFactor: CGFloat(distanceFactor))
     }
 }
