@@ -62,7 +62,11 @@ public class ChaosGamePlotViewController : NSViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         pointView.backgroundColor = .black
-        
+    }
+    
+    
+    public override func viewWillAppear() {
+        super.viewWillAppear()
         reset()
     }
     
