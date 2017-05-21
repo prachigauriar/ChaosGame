@@ -34,6 +34,19 @@ This is by no means a complete list. Play with it and see what you can discover!
 | 6        | 0.666667        | Random                    |                     |
 
 
+## Screenshots
+
+![3 Vertices, 0.5 Distance Factor, Random Vertex Selection Strategy](Screenshots/ChaosGame-3-5-Random.png "3 Vertices, 0.5 Distance Factor, Random Vertex Selection Strategy")
+
+![4 Vertices, 0.5 Distance Factor, Non-Repeating Vertex Selection Strategy](Screenshots/ChaosGame-4-5-NonRepeating.png "4 Vertices, 0.5 Distance Factor, Non-Repeating Vertex Selection Strategy")
+
+![4 Vertices, 0.5 Distance Factor, Not One Place Away Vertex Selection Strategy](Screenshots/ChaosGame-4-5-NotOnePlaceAway.png "4 Vertices, 0.5 Distance Factor, Not One Place Away Vertex Selection Strategy")
+
+![5 Vertices, 0.5 Distance Factor, Non-Repeating Vertex Selection Strategy](Screenshots/ChaosGame-5-5-NonRepeating.png "5 Vertices, 0.5 Distance Factor, Non-Repeating Vertex Selection Strategy")
+
+![5 Vertices, 0.5825 Distance Factor, Not One Place Away Vertex Selection Strategy](Screenshots/ChaosGame-6-5825-NotOnePlaceAway.png "5 Vertices, 0.5825 Distance Factor, Not One Place Away Vertex Selection Strategy")
+
+
 ## License
 
 All code is licensed under the MIT license. Do with it as you will.
