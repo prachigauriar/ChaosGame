@@ -87,11 +87,9 @@ public class ChaosGamePlotViewController : NSViewController {
         }
         
         interfaceUpdateTimer?.invalidate()
-        interfaceUpdateTimer = QueueTimer(label: "ChaosGamePlotViewController.interfaceUpdateTimer", interval: 1 / 30) { [unowned self] _ in
+        interfaceUpdateTimer = QueueTimer.scheduledTimer(label: "ChaosGamePlotViewController.interfaceUpdateTimer", interval: 1 / 60) { [unowned self] _ in
             self.updateInterface()
         }
-        
-        interfaceUpdateTimer?.schedule()
     }
     
     
@@ -113,7 +111,7 @@ public class ChaosGamePlotViewController : NSViewController {
         }
         
         plot(gameRunner.polygon.vertices, color: .blue, diameter: 10)
-        plot(gameRunner.allPoints)
+        plot(gameRunner.allPoints, color: .white, diameter: 1)
         plot([gameRunner.initialPoint], color: .red, diameter: 6)
         iterationLabel.integerValue = gameRunner.iteration
     }
@@ -130,24 +128,26 @@ public class ChaosGamePlotViewController : NSViewController {
         }
         
         OperationQueue.main.addOperation {
-            self.plot(gameRunner.flushAccumulatedPoints())
+            self.plot(gameRunner.flushAccumulatedPoints(), color: .white, diameter: 1)
             self.iterationLabel.integerValue = gameRunner.iteration
         }
     }
     
     
-    private func plot(_ points: [CGPoint], color: NSColor = .white, diameter: CGFloat = 1) {
+    private func plot(_ points: [CGPoint], color: NSColor, diameter: CGFloat) {
         guard let scene = scene else {
             return
         }
 
+        let nativeDisplaySize = self.view.convertFromBacking(CGSize(width: diameter, height: diameter))
+        
         let affineTransform = AffineTransform.init(scaleByX: scene.size.width, byY: scene.size.height)
         for point in points {
             let node: SKNode
             if diameter == 1 {
-                node = SKSpriteNode(color: color, size: CGSize(width: diameter, height: diameter))
+                node = SKSpriteNode(color: color, size: nativeDisplaySize)
             } else {
-                let shapeNode = SKShapeNode(circleOfRadius: diameter / 2)
+                let shapeNode = SKShapeNode(ellipseOf: nativeDisplaySize)
                 shapeNode.fillColor = color
                 shapeNode.lineWidth = 0
                 node = shapeNode

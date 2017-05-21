@@ -20,8 +20,6 @@
 		4C2D189A1EB5576C00C2B29B /* ChaosGameRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18991EB5576C00C2B29B /* ChaosGameRunner.swift */; };
 		4C2D189E1EB569D100C2B29B /* ChaosGamePlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D189D1EB569D100C2B29B /* ChaosGamePlotViewController.swift */; };
 		4C2D18A31EB62E8400C2B29B /* CGGeometry+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */; };
-		4C2D18AB1EB637BF00C2B29B /* NSImage+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18AA1EB637BF00C2B29B /* NSImage+Drawing.swift */; };
-		4C2D18AF1EB6865800C2B29B /* PointPlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18AE1EB6865800C2B29B /* PointPlotView.swift */; };
 		4C2D18B21EB6C1BB00C2B29B /* ConcurrentAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18B11EB6C1BB00C2B29B /* ConcurrentAccessor.swift */; };
 		4C2D18B41EB6C1CF00C2B29B /* QueueTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18B31EB6C1CF00C2B29B /* QueueTimer.swift */; };
 /* End PBXBuildFile section */
@@ -29,7 +27,6 @@
 /* Begin PBXFileReference section */
 		4C2D18691EB517B800C2B29B /* ChaosGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChaosGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2D187C1EB5184900C2B29B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C2D187D1EB5184900C2B29B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C2D187F1EB5184900C2B29B /* ChaosGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaosGameViewController.swift; sourceTree = "<group>"; };
 		4C2D18811EB5184900C2B29B /* ChaosGamePointGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaosGamePointGenerator.swift; sourceTree = "<group>"; };
 		4C2D18821EB5184900C2B29B /* IterativeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IterativeGenerator.swift; sourceTree = "<group>"; };
@@ -42,10 +39,9 @@
 		4C2D18991EB5576C00C2B29B /* ChaosGameRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaosGameRunner.swift; sourceTree = "<group>"; };
 		4C2D189D1EB569D100C2B29B /* ChaosGamePlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaosGamePlotViewController.swift; sourceTree = "<group>"; };
 		4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGGeometry+Convenience.swift"; sourceTree = "<group>"; };
-		4C2D18AA1EB637BF00C2B29B /* NSImage+Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Drawing.swift"; sourceTree = "<group>"; };
-		4C2D18AE1EB6865800C2B29B /* PointPlotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointPlotView.swift; sourceTree = "<group>"; };
 		4C2D18B11EB6C1BB00C2B29B /* ConcurrentAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentAccessor.swift; sourceTree = "<group>"; };
 		4C2D18B31EB6C1CF00C2B29B /* QueueTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTimer.swift; sourceTree = "<group>"; };
+		4CF623611ED1C71B0081E22E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +81,7 @@
 				4C2D187E1EB5184900C2B29B /* Controller */,
 				4C2D18881EB5184900C2B29B /* View */,
 				4C2D18841EB5184900C2B29B /* Resources */,
+				4CF623601ED1C71B0081E22E /* Supporting Files */,
 			);
 			path = ChaosGame;
 			sourceTree = "<group>";
@@ -93,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				4C2D187C1EB5184900C2B29B /* AppDelegate.swift */,
-				4C2D187D1EB5184900C2B29B /* Info.plist */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -133,7 +129,6 @@
 		4C2D18881EB5184900C2B29B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4C2D18AE1EB6865800C2B29B /* PointPlotView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */,
-				4C2D18AA1EB637BF00C2B29B /* NSImage+Drawing.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -154,6 +148,14 @@
 				4C2D18B31EB6C1CF00C2B29B /* QueueTimer.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		4CF623601ED1C71B0081E22E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CF623611ED1C71B0081E22E /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,11 +231,9 @@
 			files = (
 				4C2D189A1EB5576C00C2B29B /* ChaosGameRunner.swift in Sources */,
 				4C2D188D1EB5184900C2B29B /* ChaosGamePointGenerator.swift in Sources */,
-				4C2D18AF1EB6865800C2B29B /* PointPlotView.swift in Sources */,
 				4C2D188F1EB5184900C2B29B /* Polygon.swift in Sources */,
 				4C2D18A31EB62E8400C2B29B /* CGGeometry+Convenience.swift in Sources */,
 				4C2D188A1EB5184900C2B29B /* AppDelegate.swift in Sources */,
-				4C2D18AB1EB637BF00C2B29B /* NSImage+Drawing.swift in Sources */,
 				4C2D188C1EB5184900C2B29B /* ChaosGameViewController.swift in Sources */,
 				4C2D18961EB5218A00C2B29B /* PolygonVertexSelector.swift in Sources */,
 				4C2D188E1EB5184900C2B29B /* IterativeGenerator.swift in Sources */,
@@ -356,7 +356,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/ChaosGame/Application/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ChaosGame/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quantumlenscap.ChaosGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -369,7 +369,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/ChaosGame/Application/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ChaosGame/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quantumlenscap.ChaosGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";

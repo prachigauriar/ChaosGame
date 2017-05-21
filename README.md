@@ -1,22 +1,39 @@
 # The Chaos Game
 
-This is a simple Mac app that generates points for the [Chaos Game][ChaosGame]. It was mostly just
+This is a simple Mac app that generates points for the [Chaos Game][ChaosGame]. It’s mostly just
 a toy app that I built to explore the math, but feel free to use it as an example.
 
 * Implements the very simple mathematics of Chaos Game.
 * Uses `NSViewController` with multiple child view controllers to implement a single-window 
   interface.
-* Implements a custom view that draws many thousands of mathematical points with decent performance.
-  The design of this view isn’t great, but works for now. The implementation uses a backing image to
-  avoid having to redraw previously drawn points. It could be improved in the future with a data 
-  source protocol that returns the points in a given rect. It also draws concurrently.
+* Draws many hundreds of thousands of points in a SpriteKit view with good performance.
 
 
 ## To-Do (at some point)
 
 * Add more vertex selectors.
 * Add configurable parameters for point appearance.
-* Improve the design of the PointPlotView.
+* Explore using SceneKit.
+* Implement some amount of panning and zooming.
+* Implement image export.
+
+
+## Cool Fractals I’ve Found:
+
+Here’s a small selection of cool patterns I’ve found by playing with the Chaos Game parameters.
+This is by no means a complete list. Play with it and see what you can discover!
+
+| Vertices | Distance Factor | Vertex Selection Strategy | Notes               |
+|----------|-----------------|---------------------------|---------------------|
+| 3        | 0.5             | Random                    | Sierpinski Triangle |
+| 3        | 0.333333        | Not One Place Away        |                     |
+| 4        | 0.5             | Non-Repeating             |                     |
+| 4        | 0.5             | Not One Place Away        | Ninja Star          |
+| 5        | 0.5             | Non-Repeating             |                     |
+| 5        | 0.525           | Not One Place Away        |                     |
+| 5        | 0.525           | Not One Place Away        |                     |
+| 6        | 0.583333        | Non-Repeating             |                     |
+| 6        | 0.666667        | Random                    |                     |
 
 
 ## License
