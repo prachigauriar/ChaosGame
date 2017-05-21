@@ -77,7 +77,7 @@ public struct ChaosGameSettings {
             vertexSelector = RandomPolygonVertexSelector.notOneCounterClockwisePlaceAwayVertexSelector(with: polygon)
         }
         
-        return ChaosGamePointGenerator(initialPoint: CGPoint.randomPoint(in: boundingRect),
+        return ChaosGamePointGenerator(initialPoint: CGPoint.randomPoint(in: polygon.boundingRect),
                                        vertexSelector: vertexSelector,
                                        distanceFactor: CGFloat(distanceFactor))
     }

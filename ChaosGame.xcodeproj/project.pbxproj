@@ -22,6 +22,8 @@
 		4C2D18A31EB62E8400C2B29B /* CGGeometry+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */; };
 		4C2D18B21EB6C1BB00C2B29B /* ConcurrentAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18B11EB6C1BB00C2B29B /* ConcurrentAccessor.swift */; };
 		4C2D18B41EB6C1CF00C2B29B /* QueueTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18B31EB6C1CF00C2B29B /* QueueTimer.swift */; };
+		4CF6237F1ED1FED20081E22E /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF6237E1ED1FED20081E22E /* SceneKit.framework */; };
+		4CF623811ED1FEDA0081E22E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF623801ED1FEDA0081E22E /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		4C2D18B11EB6C1BB00C2B29B /* ConcurrentAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentAccessor.swift; sourceTree = "<group>"; };
 		4C2D18B31EB6C1CF00C2B29B /* QueueTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTimer.swift; sourceTree = "<group>"; };
 		4CF623611ED1C71B0081E22E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CF6237E1ED1FED20081E22E /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		4CF623801ED1FEDA0081E22E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CF623811ED1FEDA0081E22E /* Cocoa.framework in Frameworks */,
+				4CF6237F1ED1FED20081E22E /* SceneKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +66,7 @@
 			children = (
 				4C2D186B1EB517B800C2B29B /* ChaosGame */,
 				4C2D186A1EB517B800C2B29B /* Products */,
+				4CF6237D1ED1FED20081E22E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +163,15 @@
 				4CF623611ED1C71B0081E22E /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4CF6237D1ED1FED20081E22E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CF623801ED1FEDA0081E22E /* Cocoa.framework */,
+				4CF6237E1ED1FED20081E22E /* SceneKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

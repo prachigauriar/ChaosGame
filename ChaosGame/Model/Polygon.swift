@@ -34,6 +34,15 @@ public struct Polygon {
         precondition(vertices.count > 2)
         self.vertices = vertices
     }
+    
+    
+    public var boundingRect: CGRect {
+        let initialUnionRect = CGRect(origin: vertices[0], size: .zero)
+
+        return self.vertices.reduce(initialUnionRect) { unionRect, vertex in
+            return unionRect.union(CGRect(origin: vertex, size: .zero))
+        }
+    }
 }
 
 
