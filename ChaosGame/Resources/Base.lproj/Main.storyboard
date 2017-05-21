@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <plugIn identifier="com.apple.SceneKitIBPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -991,6 +992,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <sceneView loops="NO" autoenablesDefaultLighting="YES" allowsCameraControl="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jzw-7k-QAN">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                            </sceneView>
                             <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y8e-Sn-fDI">
                                 <rect key="frame" x="8" y="8" width="85" height="14"/>
                                 <subviews>
@@ -1022,12 +1026,17 @@
                             </stackView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Jzw-7k-QAN" secondAttribute="bottom" id="1Cz-7Z-mZ1"/>
+                            <constraint firstItem="Jzw-7k-QAN" firstAttribute="top" secondItem="sJp-qt-32U" secondAttribute="top" id="2uN-aN-fKo"/>
                             <constraint firstItem="y8e-Sn-fDI" firstAttribute="leading" secondItem="sJp-qt-32U" secondAttribute="leading" constant="8" id="3Ov-w4-J3x"/>
                             <constraint firstAttribute="bottom" secondItem="y8e-Sn-fDI" secondAttribute="bottom" constant="8" id="V0z-AQ-o0s"/>
+                            <constraint firstAttribute="trailing" secondItem="Jzw-7k-QAN" secondAttribute="trailing" id="lO4-0z-75k"/>
+                            <constraint firstItem="Jzw-7k-QAN" firstAttribute="leading" secondItem="sJp-qt-32U" secondAttribute="leading" id="pHh-Rh-E5p"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="iterationLabel" destination="sUV-cA-A49" id="r1r-4D-KMW"/>
+                        <outlet property="pointView" destination="Jzw-7k-QAN" id="PBG-g9-fKf"/>
                     </connections>
                 </viewController>
                 <customObject id="D79-DS-k54" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

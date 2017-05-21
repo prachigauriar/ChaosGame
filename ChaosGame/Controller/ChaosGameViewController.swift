@@ -30,6 +30,7 @@ import Cocoa
 public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewControllerDelegate {
     // Model
     private var gameRunner: ChaosGameRunner?
+    private let resolution: CGFloat = 10000
     
     // Controller State
     private var settingsViewController: ChaosGameSettingsViewController!
@@ -51,9 +52,10 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
         case "ChaosGameSettingsViewControllerEmbedSegue":
             settingsViewController = segue.destinationController as! ChaosGameSettingsViewController
             settingsViewController.delegate = self
+            initializeGameRunner()
         case "ChaosGamePlotViewControllerEmbedSegue":
             plotViewController = segue.destinationController as! ChaosGamePlotViewController
-            initializeGameRunner()
+            plotViewController.resolution = resolution
         default:
             break
         }
@@ -78,8 +80,11 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
     
     private func updateGameRunner(with settings: ChaosGameSettings?, frequency: Double) {
         if let settings = settings {
-            gameRunner = ChaosGameRunner(settings: settings, boundingRect: .chaosGameBoundingRect)
-            plotViewController.gameRunner = gameRunner
+            gameRunner = ChaosGameRunner(settings: settings, boundingRect: .chaosGameBoundingRect(resolution: resolution))
+            
+            if let plotViewController = plotViewController {
+                plotViewController.gameRunner = gameRunner
+            }
         }
         
         if let gameRunner = gameRunner {
@@ -149,7 +154,8 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
 
 
 fileprivate extension CGRect {
-    fileprivate static var chaosGameBoundingRect: CGRect {
-        return CGRect(x: 0, y: 0, width: 1, height: 1).insetBy(dx: 0.1, dy: 0.1)
+    fileprivate static func chaosGameBoundingRect(resolution: CGFloat) -> CGRect {
+        let inset = resolution * 0.1
+        return CGRect(x: 0, y: 0, width: resolution, height: resolution).insetBy(dx: inset, dy: inset)
     }
 }

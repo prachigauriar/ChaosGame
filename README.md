@@ -6,15 +6,13 @@ a toy app that I built to explore the math, but feel free to use it as an exampl
 * Implements the very simple mathematics of Chaos Game.
 * Uses `NSViewController` with multiple child view controllers to implement a single-window 
   interface.
-* Draws many hundreds of thousands of points in a SpriteKit view with good performance.
+* Draws many hundreds of thousands of points in a SceneKit view with good performance.
 
 
 ## To-Do (at some point)
 
 * Add more vertex selectors.
 * Add configurable parameters for point appearance.
-* Explore using SceneKit.
-* Implement some amount of panning and zooming.
 * Implement image export.
 
 

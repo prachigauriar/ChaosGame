@@ -69,7 +69,7 @@ public class ChaosGameSettingsViewController : NSViewController, NSTextFieldDele
         vertexCountStepper.minValue = 3
         vertexCountStepper.maxValue = 20
         
-        // We’re doing a logarithmic with values between 1 – 60,000
+        // We’re doing a logarithmic scale with values between 1 – 60,000
         frequencySlider.minValue = 0
         frequencySlider.maxValue = log10(60_000)
         
