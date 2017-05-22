@@ -52,7 +52,6 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
         case "ChaosGameSettingsViewControllerEmbedSegue":
             settingsViewController = segue.destinationController as! ChaosGameSettingsViewController
             settingsViewController.delegate = self
-            initializeGameRunner()
         case "ChaosGamePlotViewControllerEmbedSegue":
             plotViewController = segue.destinationController as! ChaosGamePlotViewController
             plotViewController.resolution = resolution
@@ -61,6 +60,12 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
         }
     }
 
+    
+    public override func viewWillAppear() {
+        super.viewWillAppear()
+        initializeGameRunner()
+    }
+    
     
     public override func viewDidDisappear() {
         super.viewDidDisappear()
@@ -108,11 +113,11 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
     // MARK: - Actions
     
     @IBAction func toggleGeneration(_ sender: NSButton?) {
-        if gameRunner == nil {
-            initializeGameRunner()
+        guard let gameRunner = gameRunner else {
+            return
         }
         
-        let shouldStart = gameRunner!.isRunning == false
+        let shouldStart = gameRunner.isRunning == false
         
         if shouldStart {
             start()

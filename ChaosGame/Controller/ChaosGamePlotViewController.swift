@@ -65,12 +65,6 @@ public class ChaosGamePlotViewController : NSViewController {
     }
     
     
-    public override func viewWillAppear() {
-        super.viewWillAppear()
-        reset()
-    }
-    
-    
     public func startMonitoringGameRunner() {
         guard gameRunner != nil else {
             return
