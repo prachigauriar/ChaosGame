@@ -27,6 +27,13 @@
 import Cocoa
 
 
+extension NSStoryboardSegue.Identifier {
+    static let settingsViewControllerEmbed = NSStoryboardSegue.Identifier("ChaosGameSettingsViewControllerEmbedSegue")
+    static let chaosGamePlotViewControllerEmbed = NSStoryboardSegue.Identifier("ChaosGamePlotViewControllerEmbedSegue")
+}
+
+
+
 public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewControllerDelegate {
     // Model
     private var gameRunner: ChaosGameRunner?
@@ -49,10 +56,10 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
         }
         
         switch identifier {
-        case "ChaosGameSettingsViewControllerEmbedSegue":
+        case .settingsViewControllerEmbed:
             settingsViewController = segue.destinationController as! ChaosGameSettingsViewController
             settingsViewController.delegate = self
-        case "ChaosGamePlotViewControllerEmbedSegue":
+        case .chaosGamePlotViewControllerEmbed:
             plotViewController = segue.destinationController as! ChaosGamePlotViewController
             plotViewController.resolution = resolution
         default:

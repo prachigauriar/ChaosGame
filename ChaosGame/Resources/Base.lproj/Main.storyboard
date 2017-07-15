@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
-        <plugIn identifier="com.apple.SceneKitIBPlugin" version="12120"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13156.6"/>
+        <plugIn identifier="com.apple.SceneKitIBPlugin" version="13156.6"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -672,6 +672,9 @@
                         <rect key="contentRect" x="196" y="240" width="750" height="500"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="750" height="500"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="sU0-Di-RF5"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -778,7 +781,7 @@
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AK9-Nb-c48" userLabel="Vertices Stack">
                                         <rect key="frame" x="0.0" y="0.0" width="88" height="19"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHx-E4-C2R">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sHx-E4-C2R">
                                                 <rect key="frame" x="-2" y="3" width="51" height="14"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vertices:" id="xh4-s0-KcR">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -789,11 +792,8 @@
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jZd-oa-GcE" userLabel="Vertices Stepper Stack">
                                                 <rect key="frame" x="55" y="0.0" width="33" height="19"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QrP-NR-bfa">
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QrP-NR-bfa">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="19"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="20" id="unq-as-t0M"/>
-                                                        </constraints>
                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="3" drawsBackground="YES" usesSingleLineMode="YES" id="Pge-Y2-JPi">
                                                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="GCa-DZ-gYx">
                                                                 <real key="minimum" value="3"/>
@@ -840,7 +840,7 @@
                                     <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AzS-qZ-9yE" userLabel="Distance Factor Stack">
                                         <rect key="frame" x="98" y="0.0" width="154" height="19"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDV-VR-eCv">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aDV-VR-eCv">
                                                 <rect key="frame" x="-2" y="3" width="90" height="14"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Distance Factor:" id="8yJ-O1-7ad">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -848,11 +848,8 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B74-Qu-I7k">
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B74-Qu-I7k">
                                                 <rect key="frame" x="94" y="0.0" width="60" height="19"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="i6K-Ss-Hlt"/>
-                                                </constraints>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0.88888" drawsBackground="YES" usesSingleLineMode="YES" id="yp4-mr-jjm">
                                                     <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" alwaysShowsDecimalSeparator="YES" minimumIntegerDigits="1" maximumIntegerDigits="1" maximumFractionDigits="6" id="PVA-YB-Vnn">
                                                         <real key="minimum" value="0.01"/>
@@ -880,9 +877,9 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uA4-44-t75" userLabel="Vertex Selection Strategy Stack">
-                                        <rect key="frame" x="262" y="1" width="315" height="18"/>
+                                        <rect key="frame" x="262" y="1" width="279" height="18"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPs-i0-WLg">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dPs-i0-WLg">
                                                 <rect key="frame" x="-2" y="2" width="141" height="14"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vertex Selection Strategy:" id="JI1-2y-kaL">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -891,7 +888,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wAZ-sf-Wgb">
-                                                <rect key="frame" x="142" y="-3" width="176" height="22"/>
+                                                <rect key="frame" x="142" y="-3" width="140" height="22"/>
                                                 <popUpButtonCell key="cell" type="push" title="Random" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="i8S-oj-Y0t" id="4qV-G3-RBU">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="smallSystem"/>
@@ -923,9 +920,9 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLR-6c-tgR" userLabel="Iteration Speed Stack">
-                                        <rect key="frame" x="587" y="3" width="345" height="14"/>
+                                        <rect key="frame" x="551" y="3" width="381" height="14"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6R1-HK-BL9">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6R1-HK-BL9">
                                                 <rect key="frame" x="-2" y="0.0" width="88" height="14"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Iteration Speed:" id="Jdj-0d-FjE">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -934,13 +931,16 @@
                                                 </textFieldCell>
                                             </textField>
                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pds-IT-l6r">
-                                                <rect key="frame" x="92" y="-0.5" width="253" height="15"/>
+                                                <rect key="frame" x="92" y="-1" width="289" height="15"/>
                                                 <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" minValue="1" maxValue="60000" doubleValue="1" tickMarkPosition="below" sliderType="linear" id="ibF-Iv-1fl"/>
                                                 <connections>
                                                     <action selector="takeFrequencyFrom:" target="Ib3-ws-Yup" id="ZzX-hq-wVJ"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="pds-IT-l6r" firstAttribute="baseline" secondItem="6R1-HK-BL9" secondAttribute="baseline" id="3Pf-bz-mwr"/>
+                                        </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
@@ -951,6 +951,9 @@
                                         </customSpacing>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="uA4-44-t75" firstAttribute="leading" secondItem="2Nd-be-GhW" secondAttribute="leading" constant="262" id="n9e-JP-qfm"/>
+                                </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
@@ -982,7 +985,7 @@
                 </viewController>
                 <customObject id="hcd-NU-YB7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="840" y="698"/>
+            <point key="canvasLocation" x="906" y="699"/>
         </scene>
         <!--Chaos Game Plot View Controller-->
         <scene sceneID="ywl-fX-JXJ">
@@ -998,7 +1001,7 @@
                             <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y8e-Sn-fDI">
                                 <rect key="frame" x="8" y="8" width="85" height="14"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvl-W4-oFW">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fvl-W4-oFW">
                                         <rect key="frame" x="-2" y="0.0" width="56" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Iteration:" id="Clj-ri-d0n">
                                             <font key="font" metaFont="smallSystemBold"/>
@@ -1006,7 +1009,7 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUV-cA-A49">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sUV-cA-A49">
                                         <rect key="frame" x="54" y="0.0" width="33" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="seL-vI-4Vi">
                                             <font key="font" metaFont="smallSystem"/>
