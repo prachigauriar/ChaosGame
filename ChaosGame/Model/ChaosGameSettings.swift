@@ -35,26 +35,26 @@ public enum VertexSelectionStrategy : Int {
 
 
 public struct ChaosGameSettings {
-    public var polygonVertexCount: Int = 3 {
+    public var polygonVertexCount: Int {
         willSet {
             precondition(newValue > 2)
         }
     }
     
-    public var distanceFactor: Double = 0.5 {
+    
+    public var distanceFactor: Double {
         willSet {
             precondition(newValue > 0 && newValue < 1)
         }
     }
     
-    public var vertexSelectionStrategy: VertexSelectionStrategy = .random
+    
+    public var vertexSelectionStrategy: VertexSelectionStrategy
     
     
-    public init() {
-    }
-    
-    
-    public init(polygonVertexCount: Int, distanceFactor: Double, vertexSelectionStrategy: VertexSelectionStrategy) {
+    public init(polygonVertexCount: Int = 3,
+                distanceFactor: Double = 0.5,
+                vertexSelectionStrategy: VertexSelectionStrategy = .random) {
         precondition(polygonVertexCount > 2)
         precondition(distanceFactor > 0 && distanceFactor < 1)
         

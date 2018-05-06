@@ -165,8 +165,8 @@ public class ChaosGameViewController : NSViewController, ChaosGameSettingsViewCo
 }
 
 
-fileprivate extension CGRect {
-    fileprivate static func chaosGameBoundingRect(resolution: CGFloat) -> CGRect {
+private extension CGRect {
+    static func chaosGameBoundingRect(resolution: CGFloat) -> CGRect {
         let inset = resolution * 0.1
         return CGRect(x: 0, y: 0, width: resolution, height: resolution).insetBy(dx: inset, dy: inset)
     }

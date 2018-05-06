@@ -28,6 +28,12 @@ import Cocoa
 
 
 public class ChaosGameSettingsViewController : NSViewController, NSTextFieldDelegate {
+    @IBOutlet weak var vertexCountField: NSTextField!
+    @IBOutlet weak var vertexCountStepper: NSStepper!
+    @IBOutlet weak var distanceFactorField: NSTextField!
+    @IBOutlet weak var vertexSelectionStrategyPopUpButton: NSPopUpButton!
+    @IBOutlet weak var frequencySlider: NSSlider!
+    
     public weak var delegate: ChaosGameSettingsViewControllerDelegate?
     
     public var settings: ChaosGameSettings = ChaosGameSettings() {
@@ -37,6 +43,7 @@ public class ChaosGameSettingsViewController : NSViewController, NSTextFieldDele
             }
         }
     }
+    
     
     public private(set) var frequency: Double = 1 {
         didSet {
@@ -55,13 +62,6 @@ public class ChaosGameSettingsViewController : NSViewController, NSTextFieldDele
         }
     }
 
-    
-    @IBOutlet weak var vertexCountField: NSTextField!
-    @IBOutlet weak var vertexCountStepper: NSStepper!
-    @IBOutlet weak var distanceFactorField: NSTextField!
-    @IBOutlet weak var vertexSelectionStrategyPopUpButton: NSPopUpButton!
-    @IBOutlet weak var frequencySlider: NSSlider!
-    
     
     public override func viewDidLoad() {
         super.viewDidLoad()

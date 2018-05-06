@@ -30,9 +30,11 @@ import Foundation
 public class ChaosGameRunner {
     private let pointGenerator: ChaosGamePointGenerator
     private let accumulatedPointsAccessor: ConcurrentAccessor<[CGPoint]> = ConcurrentAccessor([])
+    
     private lazy var generationQueue: DispatchQueue = {
         return DispatchQueue(label: "ChaosGameRunner.generator")
     }()
+    
     
     private var updateTimer: QueueTimer?
     
@@ -72,7 +74,9 @@ public class ChaosGameRunner {
         }
     }
     
+    
     private var generationIteration: Int = 0
+    
     
     public init(settings: ChaosGameSettings, boundingRect: CGRect) {
         pointGenerator = settings.makeChaosGame(boundingRect: boundingRect)

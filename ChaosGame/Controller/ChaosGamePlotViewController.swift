@@ -127,26 +127,10 @@ public class ChaosGamePlotViewController : NSViewController {
             return
         }
         
-        // Vertices
-        let vertices = points.map { SCNVector3(x: $0.x, y: $0.y, z: 0) }
-        let vertexSource = SCNGeometrySource(vertices: vertices)
-        
-        // Colors
-        let color = NSColor(calibratedRed: 1, green: 1, blue: 1, alpha: 1)
-        let colorVector = SCNVector3(color.redComponent, color.greenComponent, color.blueComponent)
-        var colors = Array(repeating: colorVector, count: points.count)
-        let colorData = Data(bytes: &colors, count: MemoryLayout<SCNVector3>.size * colors.count)
-        let colorSource = SCNGeometrySource(data: colorData,
-                                            semantic: .color,
-                                            vectorCount: colors.count,
-                                            usesFloatComponents: true,
-                                            componentsPerVector: 3,
-                                            bytesPerComponent: MemoryLayout<CGFloat>.size,
-                                            dataOffset: 0,
-                                            dataStride: 0)
-        
-        let elements = SCNGeometryElement(indices: Array(0 ..< points.count), primitiveType: .point)
-        let node = SCNNode(geometry: SCNGeometry(sources: [vertexSource, colorSource], elements: [elements]))
-        scene.rootNode.addChildNode(node)
+        let vertexSource = SCNGeometrySource(vertices: points.map { SCNVector3(x: $0.x, y: $0.y, z: 0) })
+        let element = SCNGeometryElement(indices: Array(0 ..< points.count), primitiveType: .point)
+        let geometry = SCNGeometry(sources: [vertexSource], elements: [element])
+        geometry.firstMaterial!.emission.contents = NSColor.white
+        scene.rootNode.addChildNode(SCNNode(geometry: geometry))
     }
 }

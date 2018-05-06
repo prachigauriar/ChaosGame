@@ -32,13 +32,16 @@ public class ChaosGamePointGenerator : IterativeGenerator {
     public private(set) var points: [CGPoint]
     public let distanceFactor: CGFloat
     
+    
     public var iteration: Int {
         return points.count - 1
     }
     
+    
     public var initialPoint: CGPoint {
         return points[0]
     }
+    
     
     private var lastPoint: CGPoint {
         return points[iteration]

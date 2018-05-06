@@ -30,6 +30,7 @@ import Foundation
 public struct Polygon {
     public var vertices: [CGPoint]
     
+    
     public init(vertices: [CGPoint]) {
         precondition(vertices.count > 2)
         self.vertices = vertices

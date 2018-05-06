@@ -39,11 +39,13 @@ public struct RandomPolygonVertexSelector : PolygonVertexSelector {
     public let keptChoiceCount: Int
     public let selectionPredicate: (Int, [Int]) -> Bool
     
+    
     public init(polygon: Polygon, keptChoiceCount: Int, selectionPredicate: @escaping (Int, [Int]) -> Bool) {
         self.polygon = polygon
         self.keptChoiceCount = keptChoiceCount
         self.selectionPredicate = selectionPredicate
     }
+    
     
     public mutating func selectVertex() -> CGPoint {
         var index = Int(arc4random_uniform(UInt32(polygon.vertices.count)))
