@@ -36,7 +36,7 @@ public protocol IterativeGenerator {
 
 
 public extension IterativeGenerator {
-    public func generateBatch(size: Int) -> [Output] {
+    func generateBatch(size: Int) -> [Output] {
         precondition(size > 0)
         
         var outputBatch: [Output] = []

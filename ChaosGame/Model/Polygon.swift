@@ -48,7 +48,7 @@ public struct Polygon {
 
 
 public extension Polygon {
-    public static func regularPolygon(withVertexCount vertexCount: Int, inside rect: CGRect) -> Polygon {
+    static func regularPolygon(withVertexCount vertexCount: Int, inside rect: CGRect) -> Polygon {
         let r = min(rect.width, rect.height) / 2
         let baseTheta = 2 * .pi / CGFloat(vertexCount)
         let offset = vertexCount % 2 == 0 ? baseTheta / 2 : .pi / 2
@@ -65,7 +65,7 @@ public extension Polygon {
 
 
 public extension CGRect {    
-    public func contains(_ polygon: Polygon) -> Bool {
+    func contains(_ polygon: Polygon) -> Bool {
         return polygon.vertices.first { !contains($0) } == nil
     }
 }

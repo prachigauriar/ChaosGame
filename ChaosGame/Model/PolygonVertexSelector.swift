@@ -67,14 +67,14 @@ public struct RandomPolygonVertexSelector : PolygonVertexSelector {
 
 
 public extension RandomPolygonVertexSelector {
-    public static func anyVertexSelector(with polygon: Polygon) -> RandomPolygonVertexSelector {
+    static func anyVertexSelector(with polygon: Polygon) -> RandomPolygonVertexSelector {
         return RandomPolygonVertexSelector(polygon: polygon, keptChoiceCount: 0) { (index, previouslyChosenIndexes) -> Bool in
             return true
         }
     }
 
     
-    public static func nonRepeatingVertexSelector(with polygon: Polygon) -> RandomPolygonVertexSelector {
+    static func nonRepeatingVertexSelector(with polygon: Polygon) -> RandomPolygonVertexSelector {
         return RandomPolygonVertexSelector(polygon: polygon, keptChoiceCount: 1) { (index, previouslyChosenIndexes) -> Bool in
             guard !previouslyChosenIndexes.isEmpty else {
                 return true
@@ -85,7 +85,7 @@ public extension RandomPolygonVertexSelector {
     }
     
     
-    public static func notOneCounterClockwisePlaceAwayVertexSelector(with polygon: Polygon) -> RandomPolygonVertexSelector {
+    static func notOneCounterClockwisePlaceAwayVertexSelector(with polygon: Polygon) -> RandomPolygonVertexSelector {
         return RandomPolygonVertexSelector(polygon: polygon, keptChoiceCount: 1) { (index, previouslyChosenIndexes) -> Bool in
             guard !previouslyChosenIndexes.isEmpty else {
                 return true

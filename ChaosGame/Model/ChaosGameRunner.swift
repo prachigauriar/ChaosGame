@@ -110,6 +110,7 @@ public class ChaosGameRunner {
         guard !isRunning else {
             return
         }
+        
         let updateFrequency = min(generationFrequency, 60)
         updateTimer = QueueTimer.scheduledTimer(interval: 1 / Double(updateFrequency)) { [weak self] timer in
             guard let strongSelf = self else {
