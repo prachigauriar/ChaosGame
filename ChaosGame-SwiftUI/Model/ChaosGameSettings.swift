@@ -3,7 +3,7 @@
 //  ChaosGame
 //
 //  Created by Prachi Gauriar on 4/29/2017.
-//  Copyright © 2017 Prachi Gauriar.
+//  Copyright © 2019 Prachi Gauriar.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,37 +24,38 @@
 //  SOFTWARE.
 //
 
-import Cocoa
+import CoreGraphics
+import Foundation
 
 
-public enum VertexSelectionStrategy : Int {
+enum VertexSelectionStrategy : Hashable {
     case random
     case nonRepeating
     case notOneCounterClockwisePlaceAway
 }
 
 
-public struct ChaosGameSettings {
-    public var polygonVertexCount: Int {
+struct ChaosGameSettings {
+    var polygonVertexCount: Int {
         willSet {
             precondition(newValue > 2)
         }
     }
     
     
-    public var distanceFactor: Double {
+    var distanceFactor: Double {
         willSet {
             precondition(newValue > 0 && newValue < 1)
         }
     }
     
     
-    public var vertexSelectionStrategy: VertexSelectionStrategy
+    var vertexSelectionStrategy: VertexSelectionStrategy
     
     
-    public init(polygonVertexCount: Int = 3,
-                distanceFactor: Double = 0.5,
-                vertexSelectionStrategy: VertexSelectionStrategy = .random) {
+    init(polygonVertexCount: Int = 3,
+         distanceFactor: Double = 0.5,
+         vertexSelectionStrategy: VertexSelectionStrategy = .random) {
         precondition(polygonVertexCount > 2)
         precondition(distanceFactor > 0 && distanceFactor < 1)
         
@@ -62,13 +63,17 @@ public struct ChaosGameSettings {
         self.distanceFactor = distanceFactor
         self.vertexSelectionStrategy = vertexSelectionStrategy
     }
-    
-    
-    public func makeChaosGame(boundingRect: CGRect) -> ChaosGamePointGenerator {
-        let polygon = Polygon.regularPolygon(withVertexCount: polygonVertexCount, inside: boundingRect)
-        
+}
+
+
+extension ChaosGame {
+    init(settings: ChaosGameSettings = ChaosGameSettings(), resolution: CGFloat = 10_000) {
+        let boundingRect = CGRect(x: 0, y: 0, width: resolution, height: resolution)
+            .insetBy(dx: 0.1 * resolution, dy: 0.1 * resolution)
+        let polygon = Polygon.regularPolygon(withVertexCount: settings.polygonVertexCount, inside: boundingRect)
+
         let vertexSelector: PolygonVertexSelector
-        switch vertexSelectionStrategy {
+        switch settings.vertexSelectionStrategy {
         case .random:
             vertexSelector = RandomPolygonVertexSelector.anyVertexSelector(with: polygon)
         case .nonRepeating:
@@ -76,9 +81,9 @@ public struct ChaosGameSettings {
         case .notOneCounterClockwisePlaceAway:
             vertexSelector = RandomPolygonVertexSelector.notOneCounterClockwisePlaceAwayVertexSelector(with: polygon)
         }
-        
-        return ChaosGamePointGenerator(initialPoint: CGPoint.randomPoint(in: polygon.boundingRect),
-                                       vertexSelector: vertexSelector,
-                                       distanceFactor: CGFloat(distanceFactor))
+
+        self.init(initialPoint: CGPoint.random(in: polygon.boundingRect),
+                  vertexSelector: vertexSelector,
+                  distanceFactor: CGFloat(settings.distanceFactor))
     }
 }

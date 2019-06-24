@@ -3,7 +3,7 @@
 //  ChaosGame
 //
 //  Created by Prachi Gauriar on 4/29/2017.
-//  Copyright © 2017 Prachi Gauriar.
+//  Copyright © 2019 Prachi Gauriar.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,33 +24,34 @@
 //  SOFTWARE.
 //
 
+import CoreGraphics
 import Foundation
 
 
-public protocol PolygonVertexSelector {
+protocol PolygonVertexSelector {
     var polygon: Polygon { get }
     mutating func selectVertex() -> CGPoint
 }
 
 
-public struct RandomPolygonVertexSelector : PolygonVertexSelector {
-    public let polygon: Polygon
-    public private(set) var previouslyChosenIndexes: [Int] = []
-    public let keptChoiceCount: Int
-    public let selectionPredicate: (Int, [Int]) -> Bool
+struct RandomPolygonVertexSelector : PolygonVertexSelector {
+    let polygon: Polygon
+    private(set) var previouslyChosenIndexes: [Int] = []
+    let keptChoiceCount: Int
+    let selectionPredicate: (Int, [Int]) -> Bool
     
     
-    public init(polygon: Polygon, keptChoiceCount: Int, selectionPredicate: @escaping (Int, [Int]) -> Bool) {
+    init(polygon: Polygon, keptChoiceCount: Int, selectionPredicate: @escaping (Int, [Int]) -> Bool) {
         self.polygon = polygon
         self.keptChoiceCount = keptChoiceCount
         self.selectionPredicate = selectionPredicate
     }
     
     
-    public mutating func selectVertex() -> CGPoint {
-        var index = Int(arc4random_uniform(UInt32(polygon.vertices.count)))
+    mutating func selectVertex() -> CGPoint {
+        var index = Int.random(in: 0 ..< polygon.vertices.count)
         while !selectionPredicate(index, previouslyChosenIndexes) {
-            index = Int(arc4random_uniform(UInt32(polygon.vertices.count)))
+            index = Int.random(in: 0 ..< polygon.vertices.count)
         }
         
         if keptChoiceCount > 0 {
@@ -66,7 +67,7 @@ public struct RandomPolygonVertexSelector : PolygonVertexSelector {
 }
 
 
-public extension RandomPolygonVertexSelector {
+extension RandomPolygonVertexSelector {
     static func anyVertexSelector(with polygon: Polygon) -> RandomPolygonVertexSelector {
         return RandomPolygonVertexSelector(polygon: polygon, keptChoiceCount: 0) { (index, previouslyChosenIndexes) -> Bool in
             return true

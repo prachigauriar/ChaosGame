@@ -1,9 +1,9 @@
 //
-//  ConcurrentAccessor.swift
+//  IterativeGenerator.swift
 //  ChaosGame
 //
-//  Created by Prachi Gauriar on 4/29/2017.
-//  Copyright © 2017 Prachi Gauriar.
+//  Created by Prachi Gauriar on 4/28/2017.
+//  Copyright © 2019 Prachi Gauriar.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -27,43 +27,24 @@
 import Foundation
 
 
-public class ConcurrentAccessor<BaseType> : CustomStringConvertible {
-    private var base: BaseType
-    private let queue: DispatchQueue
-    
+protocol IterativeGenerator {
+    associatedtype Value
+ 
+    var iteration: Int { get }
+    mutating func generate() -> Value
+}
 
-    public init(_ base: BaseType) {
-        self.base = base
-        self.queue = DispatchQueue(label: "\(type(of: self))", attributes: .concurrent)
-    }
-    
-    
-    public var description: String {
-        let baseDescription = read { "\($0)" }
-        return "<\(type(of: self)): queue=\(queue) base=\(baseDescription)>"
-    }
-    
 
-    public func read<ReturnType>(_ body: (BaseType) -> ReturnType) -> ReturnType {
-        var returnValue: ReturnType? = nil
-        queue.sync {
-            returnValue = body(base)
-        }
-        
-        return returnValue!
-    }
-    
-    
-    public func asyncWrite(_ body: @escaping (inout BaseType) -> ()) {
-        queue.async(flags: .barrier) {
-            body(&self.base)
-        }
-    }
+struct GeneratedBatch<Value> {
+    let values: [Value]
+    let iteration: Int
+}
 
-    
-    public func syncWrite(_ body: (inout BaseType) -> ()) {
-        queue.sync(flags: .barrier) {
-            body(&self.base)
-        }
+
+extension IterativeGenerator {
+    mutating func generateBatch(size: Int) -> GeneratedBatch<Value> {
+        precondition(size > 0)
+        let values = (0 ..< size).map { _ in generate() }
+        return GeneratedBatch(values: values, iteration: iteration)
     }
 }

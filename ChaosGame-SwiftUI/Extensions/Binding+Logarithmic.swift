@@ -1,9 +1,9 @@
 //
-//  CGGeometry+Convenience.swift
+//  Binding+Logarithmic.swift
 //  ChaosGame
 //
-//  Created by Prachi Gauriar on 4/30/2017.
-//  Copyright © 2017 Prachi Gauriar.
+//  Created by Prachi Gauriar on 6/24/2019.
+//  Copyright © 2019 Prachi Gauriar.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +24,20 @@
 //  SOFTWARE.
 //
 
-import CoreGraphics
+import Foundation
+import SwiftUI
 
 
-public extension CGRect {
-    var center: CGPoint {
-        return CGPoint(x: midX, y: midY)
+extension Binding where Value == Double {
+    /// Returns a new version of the binding that scales the value logarithmically using the specified base. That is,
+    /// when getting the value, `log_b(value)` is returned; when setting it, the new value is `pow(base, newValue)`.
+    ///
+    /// - Parameter base: The base to use.
+    func logarithmic(base: Double = 10) -> Binding<Double> {
+        Binding.init(getValue: {
+            log10(self.value) / log10(base)
+        }, setValue: { (newValue) in
+            self.value = pow(base, newValue)
+        })
     }
 }

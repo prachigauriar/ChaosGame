@@ -3,7 +3,7 @@
 //  ChaosGame
 //
 //  Created by Prachi Gauriar on 4/27/2017.
-//  Copyright © 2017 Prachi Gauriar.
+//  Copyright © 2019 Prachi Gauriar.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,21 +24,22 @@
 //  SOFTWARE.
 //
 
+import CoreGraphics
 import Foundation
 
 
-public class ChaosGamePointGenerator : IterativeGenerator {
-    public private(set) var vertexSelector: PolygonVertexSelector
-    public private(set) var points: [CGPoint]
-    public let distanceFactor: CGFloat
+struct ChaosGame : IterativeGenerator {
+    private(set) var vertexSelector: PolygonVertexSelector
+    private(set) var points: [CGPoint]
+    let distanceFactor: CGFloat
     
     
-    public var iteration: Int {
+    var iteration: Int {
         return points.count - 1
     }
     
     
-    public var initialPoint: CGPoint {
+    var initialPoint: CGPoint {
         return points[0]
     }
     
@@ -46,9 +47,14 @@ public class ChaosGamePointGenerator : IterativeGenerator {
     private var lastPoint: CGPoint {
         return points[iteration]
     }
+
+
+    var vertices: [CGPoint] {
+        return vertexSelector.polygon.vertices
+    }
+
     
-    
-    public init(initialPoint: CGPoint, vertexSelector: PolygonVertexSelector, distanceFactor: CGFloat) {
+    init(initialPoint: CGPoint, vertexSelector: PolygonVertexSelector, distanceFactor: CGFloat) {
         precondition(distanceFactor > 0 && distanceFactor < 1)
         
         self.vertexSelector = vertexSelector
@@ -57,8 +63,9 @@ public class ChaosGamePointGenerator : IterativeGenerator {
     }
     
 
-    public func generate() -> CGPoint {
-        let point = pointBetween(lastPoint, and: vertexSelector.selectVertex(), distanceFactor: distanceFactor)
+    mutating func generate() -> CGPoint {
+        let nextPoint = vertexSelector.selectVertex()
+        let point = pointBetween(lastPoint, and: nextPoint, distanceFactor: distanceFactor)
         points.append(point)
         return point
     }

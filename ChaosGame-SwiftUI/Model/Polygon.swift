@@ -3,7 +3,7 @@
 //  ChaosGame
 //
 //  Created by Prachi Gauriar on 4/29/2017.
-//  Copyright © 2017 Prachi Gauriar.
+//  Copyright © 2019 Prachi Gauriar.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,30 +24,31 @@
 //  SOFTWARE.
 //
 
+import CoreGraphics
 import Foundation
 
 
-public struct Polygon {
-    public var vertices: [CGPoint]
+struct Polygon {
+    var vertices: [CGPoint]
     
     
-    public init(vertices: [CGPoint]) {
+    init(vertices: [CGPoint]) {
         precondition(vertices.count > 2)
         self.vertices = vertices
     }
     
     
-    public var boundingRect: CGRect {
+    var boundingRect: CGRect {
         let initialUnionRect = CGRect(origin: vertices[0], size: .zero)
 
-        return self.vertices.reduce(initialUnionRect) { unionRect, vertex in
+        return self.vertices.reduce(initialUnionRect) { (unionRect, vertex) in
             return unionRect.union(CGRect(origin: vertex, size: .zero))
         }
     }
 }
 
 
-public extension Polygon {
+extension Polygon {
     static func regularPolygon(withVertexCount vertexCount: Int, inside rect: CGRect) -> Polygon {
         let r = min(rect.width, rect.height) / 2
         let baseTheta = 2 * .pi / CGFloat(vertexCount)
@@ -64,7 +65,7 @@ public extension Polygon {
 }
 
 
-public extension CGRect {    
+extension CGRect {    
     func contains(_ polygon: Polygon) -> Bool {
         return polygon.vertices.first { !contains($0) } == nil
     }

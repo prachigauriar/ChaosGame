@@ -1,9 +1,9 @@
 //
-//  AppDelegate.swift
+//  CGGeometry+Convenience.swift
 //  ChaosGame
 //
-//  Created by Prachi Gauriar on 4/29/2017.
-//  Copyright © 2017 Prachi Gauriar.
+//  Created by Prachi Gauriar on 4/30/2017.
+//  Copyright © 2019 Prachi Gauriar.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +24,11 @@
 //  SOFTWARE.
 //
 
-import Cocoa
+import CoreGraphics
 
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+extension CGRect {
+    var center: CGPoint {
+        return CGPoint(x: midX, y: midY)
+    }
 }
-

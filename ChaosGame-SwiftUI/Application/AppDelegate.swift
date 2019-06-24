@@ -1,9 +1,9 @@
 //
-//  IterativeGenerator.swift
+//  AppDelegate.swift
 //  ChaosGame
 //
-//  Created by Prachi Gauriar on 4/28/2017.
-//  Copyright © 2017 Prachi Gauriar.
+//  Created by Prachi Gauriar on 6/11/2019.
+//  Copyright © 2019 Prachi Gauriar.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,26 +24,22 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
+@UIApplicationMain
+final class AppDelegate : UIResponder, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
+        return true
+    }
 
-public protocol IterativeGenerator {
-    associatedtype Output
- 
-    var iteration: Int { get }
-    func generate() -> Output
-}
+    
+    // MARK: UISceneSession Lifecycle
 
-
-public extension IterativeGenerator {
-    func generateBatch(size: Int) -> [Output] {
-        precondition(size > 0)
-        
-        var outputBatch: [Output] = []
-        for _ in 0 ..< size {
-            outputBatch.append(generate())
-        }
-        
-        return outputBatch
+    func application(_ application: UIApplication,
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 }
+
