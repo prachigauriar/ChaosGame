@@ -1,8 +1,8 @@
 //
-//  Slider+Logarithmic.swift
+//  IteratorProtocol+Next.swift
 //  ChaosGame
 //
-//  Created by Prachi Gauriar on 6/24/2019.
+//  Created by Prachi Gauriar on 6/29/2019.
 //  Copyright © 2019 Prachi Gauriar.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,34 +25,24 @@
 //
 
 import Foundation
-import SwiftUI
 
 
-extension Slider {
-    /// Creates a new `Slider` with a base-10 logarithmic scale.
+extension IteratorProtocol {
+    /// Collects and returns up to `maxCount` elements from the iterator.
     ///
-    /// ## Example
+    /// If `maxCount` exceeds the number of elements in the iterator, the result contains all the iterator’s elements.
     ///
-    ///     @State private var frequency = 1.0
-    ///
-    ///     var body: some View {
-    ///         Slider.withLog10Scale(value: $frequency, from: 1, through: 100)
-    ///     }
-    ///
-    /// - Parameters:
-    ///   - value: A binding to the unscaled value.
-    ///   - minValue: The unscaled minimum value.
-    ///   - maxValue: The unscaled maximum value.
-    ///   - onEditingChanged: Documentation forthcoming.
-    static func withLog10Scale(value: Binding<Double>,
-                               from minValue: Double,
-                               through maxValue: Double,
-                               onEditingChanged: @escaping (Bool) -> Void = { _ in }) -> Slider {
+    /// - Parameter maxCount: The maximum number of elements to return. Must be greater than or equal to 0.
+    mutating func next(_ maxCount: Int) -> [Element] {
+        var elements: [Element] = []
+        for _ in 0 ..< maxCount {
+            guard let element = next() else {
+                break
+            }
 
-        // Convert the min and max values as well
-        return self.init(value: value.logarithmic(),
-                         from: log10(minValue),
-                         through: log10(maxValue),
-                         onEditingChanged: onEditingChanged)
+            elements.append(element)
+        }
+
+        return elements
     }
 }

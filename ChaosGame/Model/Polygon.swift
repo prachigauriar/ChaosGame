@@ -28,17 +28,23 @@ import CoreGraphics
 import Foundation
 
 
-struct Polygon {
-    var vertices: [CGPoint]
+/// A `Polygon` is simply a shape defined by a set of vertices.
+public struct Polygon {
+    /// The polygon’s vertices.
+    public var vertices: [CGPoint]
     
-    
-    init(vertices: [CGPoint]) {
+
+    /// Creates a new `Polygon` with the specified set of vertices.
+    ///
+    /// `vertices` must contain at least three points.
+    public init(vertices: [CGPoint]) {
         precondition(vertices.count > 2)
         self.vertices = vertices
     }
     
-    
-    var boundingRect: CGRect {
+
+    /// Returns the smallest rectangle that contains all the polygon’s vertices.
+    public var boundingRect: CGRect {
         let initialUnionRect = CGRect(origin: vertices[0], size: .zero)
 
         return self.vertices.reduce(initialUnionRect) { (unionRect, vertex) in
@@ -48,7 +54,12 @@ struct Polygon {
 }
 
 
-extension Polygon {
+public extension Polygon {
+    /// Creates and returns a new regular polygon with the specified number of vertices inside a bounding rectange.
+    ///
+    /// - Parameters:
+    ///   - vertexCount: The number of vertices the polygon should have.
+    ///   - rect: The rectangle in which the polygon will be placed.
     static func regularPolygon(withVertexCount vertexCount: Int, inside rect: CGRect) -> Polygon {
         let r = min(rect.width, rect.height) / 2
         let baseTheta = 2 * .pi / CGFloat(vertexCount)
@@ -65,7 +76,9 @@ extension Polygon {
 }
 
 
-extension CGRect {    
+public extension CGRect {
+    /// Returns whether specified polygon is contained entirely within the instance.
+    /// - Parameter polygon: The polygon.
     func contains(_ polygon: Polygon) -> Bool {
         return polygon.vertices.first { !contains($0) } == nil
     }

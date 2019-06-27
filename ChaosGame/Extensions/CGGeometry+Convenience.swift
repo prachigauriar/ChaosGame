@@ -1,8 +1,8 @@
 //
-//  SceneDelegate.swift
+//  CGGeometry+Convenience.swift
 //  ChaosGame
 //
-//  Created by Prachi Gauriar on 6/11/2019.
+//  Created by Prachi Gauriar on 4/30/2017.
 //  Copyright © 2019 Prachi Gauriar.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,19 +24,12 @@
 //  SOFTWARE.
 //
 
-import UIKit
-import SwiftUI
+import CoreGraphics
 
 
-final class SceneDelegate : UIResponder, UIWindowSceneDelegate {
-    var window: UIWindow?
-
-    
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use a UIHostingController as window root view controller
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UIHostingController(rootView: ChaosGameView())
-        self.window = window
-        window.makeKeyAndVisible()
+public extension CGRect {
+    /// The center point of the rectangle.
+    var center: CGPoint {
+        return CGPoint(x: midX, y: midY)
     }
 }

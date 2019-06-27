@@ -29,48 +29,58 @@ import Foundation
 import SwiftUI
 
 
-final class EditingContext<Value> : BindableObject {
-    let didChange = PassthroughSubject<EditingContext<Value>, Never>()
-    private let didSave = PassthroughSubject<Value, Never>()
-    lazy private(set) var savePublisher: AnyPublisher = {
-        didSave.eraseToAnyPublisher()
-    }()
+/// `EditingContext`s provide minimal structure so that a value can be edited as a draft and then explictly saved or
+/// discarded. It is meant primarily to act as a model for views that provide an editing interface for some specific
+/// type of value.
+public final class EditingContext<Value> : BindableObject {
+    public let didChange = PassthroughSubject<EditingContext<Value>, Never>()
 
 
-    init(_ value: Value, draft: Value? = nil) {
+    /// Creates a new `EditingContext` for the specified value and draft.
+    ///
+    /// - Parameters:
+    ///   - value: The value to edit.
+    ///   - draft: The draft that should be used when editing. If `nil`, `value` will be used. Note that this only makes
+    ///     sense for value types. If your value is a mutable reference type, you should provide a different reference
+    ///     as the draft.
+    public init(_ value: Value, draft: Value? = nil) {
         self.value = value
         self.draft = draft ?? value
     }
 
 
-    var isEditing: Bool = false {
+    /// Whether the value is being edited. This should be set to `true` when an editing interface is being displayed.
+    public var isEditing: Bool = false {
         didSet {
             didChange.send(self)
         }
     }
 
 
-    var draft: Value {
+    /// The current value.
+    public private(set) var value: Value {
         didSet {
             didChange.send(self)
         }
     }
 
 
-    var value: Value {
+    /// The draft value being edited. Editing interfaces should work this value exclusively.
+    public var draft: Value {
         didSet {
             didChange.send(self)
         }
     }
 
 
-    func save() {
+    /// Saves the current draft by overwriting the current value with the draft value.
+    public func save() {
         value = draft
-        didSave.send(value)
     }
 
 
-    func discard() {
+    /// Discards the current draft by overwriting the draft value with the current value.
+    public func discard() {
         draft = value
     }
 }

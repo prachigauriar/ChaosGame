@@ -1,8 +1,8 @@
 //
-//  CGGeometry+Convenience.swift
+//  CGPoint+Random.swift
 //  ChaosGame
 //
-//  Created by Prachi Gauriar on 4/30/2017.
+//  Created by Prachi Gauriar on 6/24/2019.
 //  Copyright © 2019 Prachi Gauriar.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,10 +25,29 @@
 //
 
 import CoreGraphics
+import Foundation
 
 
-extension CGRect {
-    var center: CGPoint {
-        return CGPoint(x: midX, y: midY)
+public extension CGPoint {
+    /// Returns a random point in the specified rectangle.
+    ///
+    /// The `SystemRandomNumberGenerator` is used to generate the point.
+    ///
+    /// - Parameter rect: The rectangle inside which a random point is selected.
+    static func random(in rect: CGRect) -> CGPoint {
+        var generator = SystemRandomNumberGenerator()
+        return random(in: rect, using: &generator)
+    }
+
+
+    /// Returns a random point in the specified rectangle.
+    ///
+    /// - Parameters:
+    ///   - rect: The rectangle inside which a random point is selected.
+    ///   - generator: The random number generator to use when generating the point.
+    static func random<RNG>(in rect: CGRect, using generator: inout RNG) -> CGPoint
+        where RNG : RandomNumberGenerator {
+            return CGPoint(x: CGFloat.random(in: rect.minX ... rect.maxX, using: &generator),
+                           y: CGFloat.random(in: rect.minY ... rect.maxY, using: &generator))
     }
 }

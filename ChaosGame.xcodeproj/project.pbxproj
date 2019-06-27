@@ -9,28 +9,28 @@
 /* Begin PBXBuildFile section */
 		4C09890E22AFF0BA00D85D8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C09890D22AFF0BA00D85D8C /* AppDelegate.swift */; };
 		4C09891022AFF0BA00D85D8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C09890F22AFF0BA00D85D8C /* SceneDelegate.swift */; };
-		4C09891222AFF0BA00D85D8C /* ChaosGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C09891122AFF0BA00D85D8C /* ChaosGameView.swift */; };
 		4C09891422AFF0BA00D85D8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C09891322AFF0BA00D85D8C /* Assets.xcassets */; };
 		4C09891722AFF0BA00D85D8C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C09891622AFF0BA00D85D8C /* Preview Assets.xcassets */; };
 		4C09891A22AFF0BA00D85D8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C09891822AFF0BA00D85D8C /* LaunchScreen.storyboard */; };
 		4C09891F22AFF1BC00D85D8C /* CGGeometry+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */; };
 		4C09892222AFF1BC00D85D8C /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18831EB5184900C2B29B /* Polygon.swift */; };
 		4C09892322AFF1BC00D85D8C /* PolygonVertexSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18951EB5218A00C2B29B /* PolygonVertexSelector.swift */; };
-		4C09892422AFF1BC00D85D8C /* IterativeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18821EB5184900C2B29B /* IterativeGenerator.swift */; };
-		4C09892522AFF1BC00D85D8C /* ChaosGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18811EB5184900C2B29B /* ChaosGame.swift */; };
+		4C09892522AFF1BC00D85D8C /* ChaosGameSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18811EB5184900C2B29B /* ChaosGameSequence.swift */; };
 		4C09892622AFF1BC00D85D8C /* ChaosGameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D18931EB51EDA00C2B29B /* ChaosGameSettings.swift */; };
 		4C0AE76422C325CD0027224E /* EditingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0AE76322C325CD0027224E /* EditingContext.swift */; };
-		4C3CE47922C29B43000BF521 /* TimedIterativeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CE47822C29B43000BF521 /* TimedIterativeGenerator.swift */; };
-		4C3F5B8A22C3FD8800692A7B /* ChaosGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F5B8922C3FD8800692A7B /* ChaosGameViewModel.swift */; };
+		4C2423EC22C70427002CA693 /* ChaosGamePlotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F5B8922C3FD8800692A7B /* ChaosGamePlotter.swift */; };
+		4C2423ED22C705A3002CA693 /* ChaosGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C09891122AFF0BA00D85D8C /* ChaosGameView.swift */; };
+		4C2423F022C793EE002CA693 /* DispatchSourceTimerPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2423EF22C793EE002CA693 /* DispatchSourceTimerPublisher.swift */; };
+		4C2423F622C7DED0002CA693 /* IteratorProtocol+Next.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2423F522C7DED0002CA693 /* IteratorProtocol+Next.swift */; };
 		4C769C3B22C0F5AC007BB763 /* EditSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C769C3A22C0F5AC007BB763 /* EditSettingsView.swift */; };
-		4CA465F122C178F200DBDD43 /* Binding+Logarithmic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA465F022C178F200DBDD43 /* Binding+Logarithmic.swift */; };
+		4CA465F122C178F200DBDD43 /* BindingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA465F022C178F200DBDD43 /* BindingHelpers.swift */; };
 		4CA465F322C1794500DBDD43 /* Slider+Logarithmic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA465F222C1794500DBDD43 /* Slider+Logarithmic.swift */; };
 		4CA465F922C1B61800DBDD43 /* CGPoint+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA465F822C1B61800DBDD43 /* CGPoint+Random.swift */; };
 		4CA465FB22C1B9A300DBDD43 /* PlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA465FA22C1B9A300DBDD43 /* PlotView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C09890B22AFF0BA00D85D8C /* ChaosGame-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChaosGame-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C09890B22AFF0BA00D85D8C /* ChaosGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChaosGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C09890D22AFF0BA00D85D8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C09890F22AFF0BA00D85D8C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4C09891122AFF0BA00D85D8C /* ChaosGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaosGameView.swift; sourceTree = "<group>"; };
@@ -39,16 +39,16 @@
 		4C09891922AFF0BA00D85D8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C09891B22AFF0BA00D85D8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C0AE76322C325CD0027224E /* EditingContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingContext.swift; sourceTree = "<group>"; };
-		4C2D18811EB5184900C2B29B /* ChaosGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaosGame.swift; sourceTree = "<group>"; };
-		4C2D18821EB5184900C2B29B /* IterativeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IterativeGenerator.swift; sourceTree = "<group>"; };
+		4C2423EF22C793EE002CA693 /* DispatchSourceTimerPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSourceTimerPublisher.swift; sourceTree = "<group>"; };
+		4C2423F522C7DED0002CA693 /* IteratorProtocol+Next.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IteratorProtocol+Next.swift"; sourceTree = "<group>"; };
+		4C2D18811EB5184900C2B29B /* ChaosGameSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaosGameSequence.swift; sourceTree = "<group>"; };
 		4C2D18831EB5184900C2B29B /* Polygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
 		4C2D18931EB51EDA00C2B29B /* ChaosGameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaosGameSettings.swift; sourceTree = "<group>"; };
 		4C2D18951EB5218A00C2B29B /* PolygonVertexSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonVertexSelector.swift; sourceTree = "<group>"; };
 		4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGGeometry+Convenience.swift"; sourceTree = "<group>"; };
-		4C3CE47822C29B43000BF521 /* TimedIterativeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedIterativeGenerator.swift; sourceTree = "<group>"; };
-		4C3F5B8922C3FD8800692A7B /* ChaosGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaosGameViewModel.swift; sourceTree = "<group>"; };
+		4C3F5B8922C3FD8800692A7B /* ChaosGamePlotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaosGamePlotter.swift; sourceTree = "<group>"; };
 		4C769C3A22C0F5AC007BB763 /* EditSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingsView.swift; sourceTree = "<group>"; };
-		4CA465F022C178F200DBDD43 /* Binding+Logarithmic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Logarithmic.swift"; sourceTree = "<group>"; };
+		4CA465F022C178F200DBDD43 /* BindingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingHelpers.swift; sourceTree = "<group>"; };
 		4CA465F222C1794500DBDD43 /* Slider+Logarithmic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Slider+Logarithmic.swift"; sourceTree = "<group>"; };
 		4CA465F822C1B61800DBDD43 /* CGPoint+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Random.swift"; sourceTree = "<group>"; };
 		4CA465FA22C1B9A300DBDD43 /* PlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotView.swift; sourceTree = "<group>"; };
@@ -67,20 +67,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4C09890C22AFF0BA00D85D8C /* ChaosGame-SwiftUI */ = {
+		4C09890C22AFF0BA00D85D8C /* ChaosGame */ = {
 			isa = PBXGroup;
 			children = (
 				4CA465F422C1B53000DBDD43 /* Application */,
 				4CA465F722C1B54D00DBDD43 /* Extensions */,
 				4CA465F522C1B53400DBDD43 /* Model */,
-				4C3F5B8B22C3FEAE00692A7B /* View Models */,
 				4CA465F622C1B53700DBDD43 /* View */,
+				4C2423EE22C793EE002CA693 /* Utility */,
 				4C09891322AFF0BA00D85D8C /* Assets.xcassets */,
 				4C09891822AFF0BA00D85D8C /* LaunchScreen.storyboard */,
 				4C09891B22AFF0BA00D85D8C /* Info.plist */,
 				4C09891522AFF0BA00D85D8C /* Preview Content */,
 			);
-			path = "ChaosGame-SwiftUI";
+			path = ChaosGame;
 			sourceTree = "<group>";
 		};
 		4C09891522AFF0BA00D85D8C /* Preview Content */ = {
@@ -91,10 +91,18 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		4C2423EE22C793EE002CA693 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				4C2423EF22C793EE002CA693 /* DispatchSourceTimerPublisher.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		4C2D18601EB517B800C2B29B = {
 			isa = PBXGroup;
 			children = (
-				4C09890C22AFF0BA00D85D8C /* ChaosGame-SwiftUI */,
+				4C09890C22AFF0BA00D85D8C /* ChaosGame */,
 				4C2D186A1EB517B800C2B29B /* Products */,
 				4CF6237D1ED1FED20081E22E /* Frameworks */,
 			);
@@ -103,18 +111,9 @@
 		4C2D186A1EB517B800C2B29B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C09890B22AFF0BA00D85D8C /* ChaosGame-SwiftUI.app */,
+				4C09890B22AFF0BA00D85D8C /* ChaosGame.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		4C3F5B8B22C3FEAE00692A7B /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				4C0AE76322C325CD0027224E /* EditingContext.swift */,
-				4C3F5B8922C3FD8800692A7B /* ChaosGameViewModel.swift */,
-			);
-			path = "View Models";
 			sourceTree = "<group>";
 		};
 		4CA465F422C1B53000DBDD43 /* Application */ = {
@@ -129,12 +128,12 @@
 		4CA465F522C1B53400DBDD43 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4C2D18821EB5184900C2B29B /* IterativeGenerator.swift */,
-				4C3CE47822C29B43000BF521 /* TimedIterativeGenerator.swift */,
 				4C2D18831EB5184900C2B29B /* Polygon.swift */,
 				4C2D18951EB5218A00C2B29B /* PolygonVertexSelector.swift */,
-				4C2D18811EB5184900C2B29B /* ChaosGame.swift */,
+				4C2D18811EB5184900C2B29B /* ChaosGameSequence.swift */,
 				4C2D18931EB51EDA00C2B29B /* ChaosGameSettings.swift */,
+				4C3F5B8922C3FD8800692A7B /* ChaosGamePlotter.swift */,
+				4C0AE76322C325CD0027224E /* EditingContext.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,9 +151,10 @@
 		4CA465F722C1B54D00DBDD43 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4CA465F022C178F200DBDD43 /* Binding+Logarithmic.swift */,
+				4CA465F022C178F200DBDD43 /* BindingHelpers.swift */,
 				4C2D18A21EB62E8400C2B29B /* CGGeometry+Convenience.swift */,
 				4CA465F822C1B61800DBDD43 /* CGPoint+Random.swift */,
+				4C2423F522C7DED0002CA693 /* IteratorProtocol+Next.swift */,
 				4CA465F222C1794500DBDD43 /* Slider+Logarithmic.swift */,
 			);
 			path = Extensions;
@@ -172,9 +172,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4C09890A22AFF0BA00D85D8C /* ChaosGame-SwiftUI */ = {
+		4C09890A22AFF0BA00D85D8C /* ChaosGame */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C09891C22AFF0BA00D85D8C /* Build configuration list for PBXNativeTarget "ChaosGame-SwiftUI" */;
+			buildConfigurationList = 4C09891C22AFF0BA00D85D8C /* Build configuration list for PBXNativeTarget "ChaosGame" */;
 			buildPhases = (
 				4C09890722AFF0BA00D85D8C /* Sources */,
 				4C09890822AFF0BA00D85D8C /* Frameworks */,
@@ -184,9 +184,9 @@
 			);
 			dependencies = (
 			);
-			name = "ChaosGame-SwiftUI";
+			name = ChaosGame;
 			productName = "ChaosGame-SwiftUI";
-			productReference = 4C09890B22AFF0BA00D85D8C /* ChaosGame-SwiftUI.app */;
+			productReference = 4C09890B22AFF0BA00D85D8C /* ChaosGame.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -218,7 +218,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4C09890A22AFF0BA00D85D8C /* ChaosGame-SwiftUI */,
+				4C09890A22AFF0BA00D85D8C /* ChaosGame */,
 			);
 		};
 /* End PBXProject section */
@@ -241,21 +241,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C2423F622C7DED0002CA693 /* IteratorProtocol+Next.swift in Sources */,
 				4CA465FB22C1B9A300DBDD43 /* PlotView.swift in Sources */,
-				4C09892422AFF1BC00D85D8C /* IterativeGenerator.swift in Sources */,
-				4C09892522AFF1BC00D85D8C /* ChaosGame.swift in Sources */,
+				4C09892522AFF1BC00D85D8C /* ChaosGameSequence.swift in Sources */,
 				4CA465F322C1794500DBDD43 /* Slider+Logarithmic.swift in Sources */,
 				4C09890E22AFF0BA00D85D8C /* AppDelegate.swift in Sources */,
 				4C09891F22AFF1BC00D85D8C /* CGGeometry+Convenience.swift in Sources */,
+				4C2423ED22C705A3002CA693 /* ChaosGameView.swift in Sources */,
 				4C0AE76422C325CD0027224E /* EditingContext.swift in Sources */,
-				4C3F5B8A22C3FD8800692A7B /* ChaosGameViewModel.swift in Sources */,
 				4C09891022AFF0BA00D85D8C /* SceneDelegate.swift in Sources */,
-				4C09891222AFF0BA00D85D8C /* ChaosGameView.swift in Sources */,
 				4C09892322AFF1BC00D85D8C /* PolygonVertexSelector.swift in Sources */,
-				4C3CE47922C29B43000BF521 /* TimedIterativeGenerator.swift in Sources */,
-				4CA465F122C178F200DBDD43 /* Binding+Logarithmic.swift in Sources */,
+				4C2423EC22C70427002CA693 /* ChaosGamePlotter.swift in Sources */,
+				4CA465F122C178F200DBDD43 /* BindingHelpers.swift in Sources */,
 				4C09892622AFF1BC00D85D8C /* ChaosGameSettings.swift in Sources */,
 				4C769C3B22C0F5AC007BB763 /* EditSettingsView.swift in Sources */,
+				4C2423F022C793EE002CA693 /* DispatchSourceTimerPublisher.swift in Sources */,
 				4C09892222AFF1BC00D85D8C /* Polygon.swift in Sources */,
 				4CA465F922C1B61800DBDD43 /* CGPoint+Random.swift in Sources */,
 			);
@@ -283,15 +283,15 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "ChaosGame-SwiftUI/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "ChaosGame/Preview\\ Content";
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "ChaosGame-SwiftUI/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ChaosGame/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.quantumlenscap.ChaosGame-SwiftUI";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quantumlenscap.ChaosGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -307,14 +307,14 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "ChaosGame-SwiftUI/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "ChaosGame/Preview\\ Content";
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "ChaosGame-SwiftUI/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ChaosGame/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.quantumlenscap.ChaosGame-SwiftUI";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quantumlenscap.ChaosGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -434,7 +434,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4C09891C22AFF0BA00D85D8C /* Build configuration list for PBXNativeTarget "ChaosGame-SwiftUI" */ = {
+		4C09891C22AFF0BA00D85D8C /* Build configuration list for PBXNativeTarget "ChaosGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C09891D22AFF0BA00D85D8C /* Debug */,

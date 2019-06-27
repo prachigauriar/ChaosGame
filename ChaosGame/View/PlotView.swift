@@ -30,24 +30,36 @@ import SwiftUI
 
 
 struct PlotView : View {
-    @Binding var scene: SCNScene
-    @Binding var iterationCount: Int
+    let scene: SCNScene
+    let pointCount: Int
+
+    private static let pointCountFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.usesGroupingSeparator = true
+        return formatter
+    }()
+
 
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            SceneKitView(scene: $scene)
+            SceneKitView(scene: scene)
                 .edgesIgnoringSafeArea(.all)
-            (Text("Iterations: ").fontWeight(.heavy) +  Text(String(describing: iterationCount)))
+            (Text("Points: ").fontWeight(.heavy) + Text(formattedPointCount))
                 .font(.subheadline)
                 .foregroundColor(.white)
                 .padding()
         }
     }
+
+
+    private var formattedPointCount: String {
+        return type(of: self).pointCountFormatter.string(from: NSNumber(value: pointCount))!
+    }
 }
 
 
 private struct SceneKitView : View, UIViewRepresentable {
-    @Binding var scene: SCNScene
+    let scene: SCNScene
 
 
     func makeUIView(context: UIViewRepresentableContext<SceneKitView>) -> SCNView {

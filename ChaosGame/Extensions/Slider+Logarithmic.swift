@@ -1,5 +1,5 @@
 //
-//  Binding+Logarithmic.swift
+//  Slider+Logarithmic.swift
 //  ChaosGame
 //
 //  Created by Prachi Gauriar on 6/24/2019.
@@ -28,16 +28,29 @@ import Foundation
 import SwiftUI
 
 
-extension Binding where Value == Double {
-    /// Returns a new version of the binding that scales the value logarithmically using the specified base. That is,
-    /// when getting the value, `log_b(value)` is returned; when setting it, the new value is `pow(base, newValue)`.
+public extension Slider {
+    /// Creates a new `Slider` with a base-10 logarithmic scale.
     ///
-    /// - Parameter base: The base to use.
-    func logarithmic(base: Double = 10) -> Binding<Double> {
-        Binding.init(getValue: {
-            log10(self.value) / log10(base)
-        }, setValue: { (newValue) in
-            self.value = pow(base, newValue)
-        })
+    /// ## Example
+    ///
+    ///     @State private var frequency = 1.0
+    ///
+    ///     var body: some View {
+    ///         Slider.withLog10Scale(value: $frequency, from: 1, through: 100)
+    ///     }
+    ///
+    /// - Parameters:
+    ///   - value: A binding to the unscaled value.
+    ///   - minValue: The unscaled minimum value.
+    ///   - maxValue: The unscaled maximum value.
+    ///   - onEditingChanged: Documentation forthcoming.
+    static func withLog10Scale(value: Binding<Double>,
+                               from minValue: Double,
+                               through maxValue: Double,
+                               onEditingChanged: @escaping (Bool) -> Void = { _ in }) -> Slider {
+        return self.init(value: value.logarithmic(),
+                         from: log10(minValue),
+                         through: log10(maxValue),
+                         onEditingChanged: onEditingChanged)
     }
 }
