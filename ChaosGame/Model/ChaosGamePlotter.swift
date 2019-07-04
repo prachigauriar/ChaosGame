@@ -207,7 +207,7 @@ public final class ChaosGamePlotter : BindableObject {
         }
 
         let vertexSource = SCNGeometrySource(vertices: points.map { SCNVector3($0.x, $0.y, 0) })
-        let element = SCNGeometryElement(indices: (0 ..< points.count).map { UInt32($0) }, primitiveType: .point)
+        let element = SCNGeometryElement(indices: (0 ..< points.endIndex).map { UInt32($0) }, primitiveType: .point)
         let geometry = SCNGeometry(sources: [vertexSource], elements: [element])
         geometry.firstMaterial!.emission.contents = UIColor.white
         scene.rootNode.addChildNode(SCNNode(geometry: geometry))

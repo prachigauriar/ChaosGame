@@ -70,16 +70,16 @@ public struct RandomPolygonVertexSelector : PolygonVertexSelector {
     
     
     public mutating func selectVertex() -> CGPoint {
-        var index = Int.random(in: 0 ..< polygon.vertices.count)
+        var index = Int.random(in: 0 ..< polygon.vertices.endIndex)
         while !selectionPredicate(index, previousSelectedIndexes) {
-            index = Int.random(in: 0 ..< polygon.vertices.count)
+            index = Int.random(in: 0 ..< polygon.vertices.endIndex)
         }
         
         if keptSelectionCount > 0 {
             previousSelectedIndexes.insert(index, at: 0)
             
             if previousSelectedIndexes.count > keptSelectionCount {
-                previousSelectedIndexes.remove(at: previousSelectedIndexes.count - 1)
+                previousSelectedIndexes.remove(at: previousSelectedIndexes.endIndex - 1)
             }
         }
         
