@@ -46,7 +46,7 @@ public extension Binding where Value == Double {
     ///
     /// - Parameter rule: The rounding rule to use.
     func rounded(_ rule: FloatingPointRoundingRule = .toNearestOrAwayFromZero) -> Binding<Double> {
-        Binding(get: { () -> Double in
+        Binding(get: {
             self.value.rounded(rule)
         }, set: { (newValue) in
             self.value = newValue.rounded(rule)
@@ -56,10 +56,20 @@ public extension Binding where Value == Double {
 
     /// Returns a new version of the binding that converts the value to an `Int`.
     func asInt() -> Binding<Int> {
-        Binding<Int>(get: { () -> Int in
+        Binding<Int>(get: {
             Int(self.value)
         }, set: { (newValue) in
             self.value = Double(newValue)
+        })
+    }
+    
+    
+    /// Returns a new version of the binding that converts the value to an `NSNumber`.
+    func asNSNumber() -> Binding<NSNumber> {
+        return Binding<NSNumber>(get: {
+            NSNumber(value: self.value)
+        }, set: {
+            self.value = $0.doubleValue
         })
     }
 }

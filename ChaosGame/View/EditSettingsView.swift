@@ -36,6 +36,9 @@ public struct EditSettingsView : View {
     /// The editing context used as a model for this view.
     @ObservedObject private var context: EditingContext<ChaosGameSettings>
 
+    /// Stores the distance factor that is being edited by the text field.
+    @State private var distanceFactor: Double
+    
     /// A closure to execute when the user presses the Save button.
     private let onSave: () -> Void
 
@@ -47,9 +50,10 @@ public struct EditSettingsView : View {
     ///   - onSave: A closure to execute when the user presses the Save button.
     public init(context: ObservedObject<EditingContext<ChaosGameSettings>>, onSave: @escaping () -> Void = { }) {
         self._context = context
+        self._distanceFactor = State<Double>(initialValue: context.wrappedValue.draft.distanceFactor)
         self.onSave = onSave
     }
-
+    
     
     public var body: some View {
         NavigationView {
@@ -60,10 +64,15 @@ public struct EditSettingsView : View {
                 }
 
                 // Distance Factor
-                Stepper(value: $context.draft.distanceFactor, in: 0.05 ... 0.95, step: 0.025) {
-                    Text("Distance Factor: \(formattedDistanceFactor)")
+                HStack {
+                    Text("Distance Factor:")
+                    TextField("", value: $distanceFactor.asNSNumber(),
+                              formatter: type(of: self).distanceFactorFormatter, onCommit: {
+                                self.context.draft.distanceFactor = self.distanceFactor
+                    })
+                        .multilineTextAlignment(.trailing)
                 }
-
+                
                 // Vertex Selection Strategy
                 Picker(selection: $context.draft.vertexSelectionStrategy, label: Text("Vertex Selection Strategy")) {
                     ForEach(ChaosGameSettings.VertexSelectionStrategy.allCases, id: \.self) {
@@ -81,7 +90,9 @@ public struct EditSettingsView : View {
     private static let distanceFactorFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 3
+        formatter.maximumFractionDigits = 6
+        formatter.isPartialStringValidationEnabled = true
+        formatter.isLenient = true
         return formatter
     }()
 

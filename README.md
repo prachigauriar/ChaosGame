@@ -16,7 +16,7 @@ This is by no means a complete list. Play with it and see what you can discover!
 | Vertices | Distance Factor | Vertex Selection Strategy | Notes               |
 |----------|-----------------|---------------------------|---------------------|
 | 3        | 0.5             | Random                    | Sierpinski Triangle |
-| 3        | 0.35            | Not One Place Away        |                     |
+| 3        | 0.333333        | Not One Place Away        |                     |
 | 4        | 0.5             | Non-Repeating             |                     |
 | 4        | 0.5             | Not One Place Away        | Ninja Star          |
 | 4        | 0.5             | Not Two Places Away       |                     |
@@ -24,8 +24,8 @@ This is by no means a complete list. Play with it and see what you can discover!
 | 5        | 0.5             | Non-Repeating             |                     |
 | 5        | 0.525           | Not One Place Away        |                     |
 | 5        | 0.55            | Not Adjacent              |                     |
-| 6        | 0.575           | Non-Repeating             |                     |
-| 6        | 0.65            | Random                    |                     |
+| 6        | 0.583333        | Non-Repeating             |                     |
+| 6        | 0.666667        | Random                    |                     |
 
 
 ## Screenshots
