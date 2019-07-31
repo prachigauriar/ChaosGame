@@ -34,9 +34,9 @@ public extension Binding where Value == Double {
     ///
     /// - Parameter base: The base to use.
     func logarithmic(base: Double = 10) -> Binding<Double> {
-        Binding.init(getValue: {
+        Binding(get: {
             log10(self.value) / log10(base)
-        }, setValue: { (newValue) in
+        }, set: { (newValue) in
             self.value = pow(base, newValue)
         })
     }
@@ -46,9 +46,9 @@ public extension Binding where Value == Double {
     ///
     /// - Parameter rule: The rounding rule to use.
     func rounded(_ rule: FloatingPointRoundingRule = .toNearestOrAwayFromZero) -> Binding<Double> {
-        Binding(getValue: { () -> Double in
+        Binding(get: { () -> Double in
             self.value.rounded(rule)
-        }, setValue: { (newValue) in
+        }, set: { (newValue) in
             self.value = newValue.rounded(rule)
         })
     }
@@ -56,9 +56,9 @@ public extension Binding where Value == Double {
 
     /// Returns a new version of the binding that converts the value to an `Int`.
     func asInt() -> Binding<Int> {
-        Binding<Int>(getValue: { () -> Int in
+        Binding<Int>(get: { () -> Int in
             Int(self.value)
-        }, setValue: { (newValue) in
+        }, set: { (newValue) in
             self.value = Double(newValue)
         })
     }
@@ -68,9 +68,9 @@ public extension Binding where Value == Double {
 public extension Binding where Value == Int {
     /// Returns a new version of the binding that converts the value to a `Double`.
     func asDouble() -> Binding<Double> {
-        Binding<Double>(getValue: { () -> Double in
+        Binding<Double>(get: { () -> Double in
             Double(self.value)
-        }, setValue: { (newValue) in
+        }, set: { (newValue) in
             self.value = Int(newValue)
         })
     }

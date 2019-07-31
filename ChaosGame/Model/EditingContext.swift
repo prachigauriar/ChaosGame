@@ -26,14 +26,20 @@
 
 import Combine
 import Foundation
-import SwiftUI
 
 
 /// `EditingContext`s provide minimal structure so that a value can be edited as a draft and then explictly saved or
 /// discarded. It is meant primarily to act as a model for views that provide an editing interface for some specific
 /// type of value.
-public final class EditingContext<Value> : BindableObject {
-    public let didChange = PassthroughSubject<EditingContext<Value>, Never>()
+public final class EditingContext<Value> : ObservableObject {
+    /// Whether the value is being edited. This should be set to `true` when an editing interface is being displayed.
+    @Published public var isEditing = false
+
+    /// The current value.
+    @Published public private(set) var value: Value
+
+    /// The draft value being edited. Editing interfaces should work this value exclusively.
+    @Published public var draft: Value
 
 
     /// Creates a new `EditingContext` for the specified value and draft.
@@ -46,30 +52,6 @@ public final class EditingContext<Value> : BindableObject {
     public init(_ value: Value, draft: Value? = nil) {
         self.value = value
         self.draft = draft ?? value
-    }
-
-
-    /// Whether the value is being edited. This should be set to `true` when an editing interface is being displayed.
-    public var isEditing: Bool = false {
-        didSet {
-            didChange.send(self)
-        }
-    }
-
-
-    /// The current value.
-    public private(set) var value: Value {
-        didSet {
-            didChange.send(self)
-        }
-    }
-
-
-    /// The draft value being edited. Editing interfaces should work this value exclusively.
-    public var draft: Value {
-        didSet {
-            didChange.send(self)
-        }
     }
 
 

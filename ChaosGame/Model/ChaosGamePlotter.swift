@@ -27,16 +27,13 @@
 import Combine
 import Foundation
 import SceneKit
-import SwiftUI
 
 
 /// A `ChaosGamePlotter` plots the points from `ChaosGameSequence` to an `SCNScene`. The rate at which it generates and
 /// plots points can be modified using `rate`, and plotting can be started and stopped using the `isRunning` property.
 ///
 /// `ChaosGamePlotter`s are meant to be used as the models for views that display a `ChaosGameSequence`’s points.
-public final class ChaosGamePlotter : BindableObject {
-    public let didChange = PassthroughSubject<ChaosGamePlotter, Never>()
-
+public final class ChaosGamePlotter : ObservableObject {
     /// An iterator for the Chaos Game’s points.
     private var chaosGamePointIterator: ChaosGameSequence.Iterator
 
@@ -47,11 +44,7 @@ public final class ChaosGamePlotter : BindableObject {
     private var pointSubscriber: AnyCancellable?
 
     /// The number of points that have been generated.
-    private(set) var pointCount = 0 {
-        didSet {
-            didChange.send(self)
-        }
-    }
+    @Published private(set) var pointCount = 0
 
     /// The SceneKit scene to which points are plotted.
     public private(set) var scene = SCNScene()
@@ -66,12 +59,10 @@ public final class ChaosGamePlotter : BindableObject {
     }
 
 
-
-
     // MARK: - Controlling Point Generation
 
     /// Whether the instance is currently generating and plotting points.
-    public var isRunning = false {
+    @Published public var isRunning = false {
         didSet {
             if isRunning != oldValue {
                 if isRunning {
@@ -79,15 +70,13 @@ public final class ChaosGamePlotter : BindableObject {
                 } else {
                     pointSubscriber = nil
                 }
-
-                didChange.send(self)
             }
         }
     }
 
 
     /// The rate at which points are generated. Represented in points/sec. Must be 1 or larger.
-    public var rate: Int = 1 {
+    @Published public var rate: Int = 1 {
         didSet {
             precondition(rate > 0)
 
@@ -95,8 +84,6 @@ public final class ChaosGamePlotter : BindableObject {
                 if isRunning {
                     schedulePointSubscriber()
                 }
-
-                didChange.send(self)
             }
         }
     }
@@ -116,14 +103,14 @@ public final class ChaosGamePlotter : BindableObject {
     ///
     /// - Parameter settings: The `ChaosGameSettings` to use when generating points.
     public func reset(with settings: ChaosGameSettings) {
+        objectWillChange.send()
+
         isRunning = false
         pointCount = 0
 
         let chaosGame = ChaosGameSequence(settings: settings)
         chaosGamePointIterator = chaosGame.makeIterator()
         resetScene(chaosGame: chaosGame)
-
-        didChange.send(self)
     }
 
 
@@ -213,4 +200,3 @@ public final class ChaosGamePlotter : BindableObject {
         scene.rootNode.addChildNode(SCNNode(geometry: geometry))
     }
 }
-

@@ -28,7 +28,7 @@ import Foundation
 import SwiftUI
 
 
-public extension Slider {
+public extension Slider where ValueLabel == EmptyView {
     /// Creates a new `Slider` with a base-10 logarithmic scale.
     ///
     /// ## Example
@@ -36,21 +36,21 @@ public extension Slider {
     ///     @State private var frequency = 1.0
     ///
     ///     var body: some View {
-    ///         Slider.withLog10Scale(value: $frequency, from: 1, through: 100)
+    ///         Slider.withLog10Scale(value: $frequency, in: 1 ... 100) { Text("Frequency") }
     ///     }
     ///
     /// - Parameters:
     ///   - value: A binding to the unscaled value.
-    ///   - minValue: The unscaled minimum value.
-    ///   - maxValue: The unscaled maximum value.
+    ///   - bounds: The unscaled bounds for the value.
     ///   - onEditingChanged: Documentation forthcoming.
+    ///   - label: The slider’s label.
     static func withLog10Scale(value: Binding<Double>,
-                               from minValue: Double,
-                               through maxValue: Double,
-                               onEditingChanged: @escaping (Bool) -> Void = { _ in }) -> Slider {
+                               in bounds: ClosedRange<Double>,
+                               onEditingChanged: @escaping (Bool) -> Void = { _ in },
+                               label: () -> Label) -> Slider {
         return self.init(value: value.logarithmic(),
-                         from: log10(minValue),
-                         through: log10(maxValue),
-                         onEditingChanged: onEditingChanged)
+                         in: log10(bounds.lowerBound) ... log10(bounds.upperBound),
+                         onEditingChanged: onEditingChanged,
+                         label: label)
     }
 }

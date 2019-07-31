@@ -3,9 +3,9 @@
 This is a simple iOS app that generates points for the [Chaos Game][ChaosGame]. It’s mostly just
 a toy app that I built to explore the math, but feel free to use it as an example.
 
-* Implements the very simple mathematics of Chaos Game in Swift.
-* Uses SwiftUI with Combine to implement the user interface.
-* Draws many hundreds of thousands of points in a SceneKit view with good performance.
+  - Implements the very simple mathematics of Chaos Game in Swift.
+  - Uses SwiftUI with Combine to implement the user interface.
+  - Draws many hundreds of thousands of points in a SceneKit view with good performance.
 
 
 ## Cool Fractals I’ve Found:

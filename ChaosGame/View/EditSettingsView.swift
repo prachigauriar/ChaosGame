@@ -34,7 +34,7 @@ import SwiftUI
 /// actions.
 public struct EditSettingsView : View {
     /// The editing context used as a model for this view.
-    @Binding public private(set) var context: EditingContext<ChaosGameSettings>
+    @ObservedObject private var context: EditingContext<ChaosGameSettings>
 
     /// A closure to execute when the user presses the Save button.
     private let onSave: () -> Void
@@ -45,8 +45,8 @@ public struct EditSettingsView : View {
     /// - Parameters:
     ///   - context: A binding to the editing context for the view.
     ///   - onSave: A closure to execute when the user presses the Save button.
-    public init(context: Binding<EditingContext<ChaosGameSettings>>, onSave: @escaping () -> Void = { }) {
-        $context = context
+    public init(context: ObservedObject<EditingContext<ChaosGameSettings>>, onSave: @escaping () -> Void = { }) {
+        self._context = context
         self.onSave = onSave
     }
 
@@ -66,7 +66,7 @@ public struct EditSettingsView : View {
 
                 // Vertex Selection Strategy
                 Picker(selection: $context.draft.vertexSelectionStrategy, label: Text("Vertex Selection Strategy")) {
-                    ForEach(ChaosGameSettings.VertexSelectionStrategy.allCases.identified(by: \.self)) {
+                    ForEach(ChaosGameSettings.VertexSelectionStrategy.allCases, id: \.self) {
                         Text($0.localizedStringKey).tag($0)
                     }
                 }

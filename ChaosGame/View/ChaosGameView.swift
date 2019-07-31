@@ -37,24 +37,25 @@ public struct ChaosGameView : View {
     private static let rateFormatter = MeasurementFormatter()
 
     /// The plotter that is used as a primary model object.
-    @ObjectBinding private var plotter = ChaosGamePlotter()
-
+    @ObservedObject private var plotter = ChaosGamePlotter()
+    
     /// The rate at which the ChaosGamePlotter plots points. This is used to store the value of the slider. However, the
     /// value is only written to the plotter’s rate when the slider is done changing the value. This is to limit the
     /// amount of
     @State private var rate: Double = 1.0
 
     /// The editing context for editing the plotter’s settings.
-    @State private var settingsEditingContext = EditingContext(ChaosGameSettings())
+    @ObservedObject private var settingsEditingContext = EditingContext(ChaosGameSettings())
 
 
     public var body: some View {
         VStack {
             VStack {
-                Slider.withLog10Scale(value: $rate.rounded(.towardZero), from: 1, through: 60_000) { (_) in
+                Slider.withLog10Scale(value: $rate.rounded(.towardZero), in: 1 ... 60_000, onEditingChanged: { (_) in
                     self.plotter.rate = Int(self.rate)
-                }
+                }, label: { EmptyView() })
 
+                
                 Text("Rate: \(formattedRate)")
                     .font(.subheadline)
 
@@ -63,12 +64,12 @@ public struct ChaosGameView : View {
                         Image(systemName: "backward.end.alt")
                             .imageScale(.large)
                     }
-
+                    
                     Button(action: toggleRunningState) {
                         Image(systemName: plotter.isRunning ? "pause" : "play")
                             .imageScale(.large)
                     }
-
+                    
                     Button(action: startEditingSettings) {
                         Image(systemName: "gear")
                     }.disabled(plotter.isRunning)
@@ -76,26 +77,20 @@ public struct ChaosGameView : View {
             }.padding()
 
             PlotView(scene: plotter.scene, pointCount: plotter.pointCount)
-        }.presentation(settingsEditingContext.isEditing ? editSettingsModal : nil)
+        }.sheet(isPresented: $settingsEditingContext.isEditing, onDismiss: {
+            self.settingsEditingContext.discard()
+            self.settingsEditingContext.isEditing = false
+        }, content: {
+            EditSettingsView(context: self._settingsEditingContext) {
+                self.resetGame()
+            }
+        })
     }
 
 
     /// Returns the current rate formatted in Hz.
     private var formattedRate: String {
         return type(of: self).rateFormatter.string(from: Measurement(value: rate, unit: UnitFrequency.hertz))
-    }
-
-
-    /// Returns a modal containing an `EditSettings` view.
-    private var editSettingsModal: Modal {
-        let editSettingsView = EditSettingsView(context: $settingsEditingContext) {
-            self.resetGame()
-        }
-
-        return Modal(editSettingsView) {
-            self.settingsEditingContext.discard()
-            self.settingsEditingContext.isEditing = false
-        }
     }
 
 
