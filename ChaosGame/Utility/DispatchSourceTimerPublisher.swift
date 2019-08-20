@@ -30,7 +30,7 @@ import Combine
 
 
 /// `DispatchSourceTimerPublisher`s model `DispatchSourceTimer`s as publishers.
-public final class DispatchSourceTimerPublisher : Publisher {
+public struct DispatchSourceTimerPublisher : Publisher {
     public typealias Output = Date
     public typealias Failure = Never
 
